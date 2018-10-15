@@ -1,0 +1,139 @@
+
+swagger : '2.0'
+
+info:
+  title: com.syngenta.esb.servicesAPI
+  version: '1.0'
+  description: The com.syngenta.esb.servicesAPI provides operations for <<< add a description here >>>.
+
+
+#Definition of Host / Protocol, and base-path
+schemes:
+  - https
+host: apigateway.nl
+basePath: /api/basePath
+
+#Reusable Section  objects, parameters, responses
+responses:
+
+ #This message will represent Success Responses with body contents - Any type of content
+  Success200Response:
+    description: Success response.
+    schema :
+     type: object
+     properties:
+      body:
+        type : string
+
+  #This message will represent Technical Faults from the ESB/Backend Services
+  ServerError500Response:
+    description: Internal Server Error.
+    schema :
+     type: object
+     properties:
+      message:
+        type : string
+      examples:
+        application/json:
+          {"TechnicalFault": {
+            "errorCode": "999999",
+            "errorMessage": "Technical Error Message",
+            "instruction": "This is the instructions",
+            "description": "A detailed description of the issue"
+          }}
+
+  #This message will represent Wrong Payloas and parameters sent to the endpoint ValidationFault
+  BadRequest400Response:
+    description: Bad Request
+    schema :
+     type: object
+     properties:
+      message:
+        type : string
+      examples:
+        application/json:
+          {"ValidationFault": {
+            "errorCode": "999999",
+            "errorMessage": "This is the error message",
+            "instruction": "This is the instructions"
+          }}
+
+
+
+   #This message will represent Security Faults from the ESB-Backend Services
+  Unauthorized401Response:
+    description: Unauthorized
+    schema :
+     type: object
+     properties:
+      message:
+        type : string
+      examples:
+        application/json:
+          {"SecurityFault": {
+            "errorCode": "99999",
+            "errorMessage": "This is the error message",
+            "description": "This is the error description"
+          }}
+
+  #This message will represent a BusinessFault
+  Business456Response:
+    description: Business Error
+    schema :
+     type: object
+     properties:
+      message:
+        type : string
+      examples:
+        application/json:
+          {"BusinessFault": {
+            "errorCode": "999999",
+            "errorMessage": "this is the error message"
+          }}
+
+
+#Definition of API Paths and Verbs.
+paths:
+
+# example of request  /com.syngenta.esb.services
+  /com.syngenta.esb.services:
+    get:
+      summary: This endpoint performs a <<< enter a summary here >>>
+      description : This operation <<< enter a description here >>>.
+      operationId: Backend_operation_name   #Operation related to this endpoint
+      consumes:
+        - application/json
+      produces:
+        - application/json
+
+      #Tags are used for documentation purposes
+      tags:
+        - Internal Payment
+
+
+      #Parameters defined for this endpoint
+      parameters:
+        - name: param_name
+          in: query
+          type: string
+          required: false
+          description: Query parameter <<< enter a description here >>>
+
+      #http responses code, and example can be used just for help consumers
+      responses:
+        200:
+         $ref: "#/responses/Success200Response"
+         examples:
+            application/json:
+              {
+               "jsonExample_variable": 12345
+              }
+
+        400:
+         $ref: "#/responses/BadRequest400Response"
+        401:
+         $ref: "#/responses/Unauthorized401Response"
+        456:
+         $ref: "#/responses/Business456Response"
+        500:
+         $ref: "#/responses/ServerError500Response"

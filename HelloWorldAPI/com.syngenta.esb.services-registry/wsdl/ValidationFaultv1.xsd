@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://garantibank.eu/ebo/v1"
+	targetNamespace="http://garantibank.eu/ebo/v1" elementFormDefault="unqualified">
+
+	<xsd:complexType name="ValidationFault">
+		<xsd:annotation>
+			<xsd:documentation>
+			<![CDATA[
+				The Validation fault represents an InputParameters and XMLSchema Validation Error occurred at the ESB level.
+				some examples are; Invalid XML Payload, Required Input Parameters not informed
+
+			]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="errorCode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="errorMessage" type="xsd:string" minOccurs="0" />
+			<xsd:element name="instruction" type="xsd:string"	minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

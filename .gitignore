@@ -1,0 +1,10 @@
+.project
+/HelloWorldAPI/com.syngenta.esb.services-registry/wsdl/.meta/~.xml
+/HelloWorldAPI/com.syngenta.esb.services-registry/wsdl/.meta/~BusinessFaultv1.xsd.xml
+/HelloWorldAPI/com.syngenta.esb.services-registry/wsdl/.meta/~CustomerServicev1.wsdl.xml
+/HelloWorldAPI/com.syngenta.esb.services-registry/wsdl/.meta/~CustomerServicev1.xsd.xml
+/HelloWorldAPI/com.syngenta.esb.services-registry/wsdl/.meta/~GenericHttpErrorFaultv1.xsd.xml
+/HelloWorldAPI/com.syngenta.esb.services-registry/wsdl/.meta/~SecurityFaultv1.xsd.xml
+/HelloWorldAPI/com.syngenta.esb.services-registry/wsdl/.meta/~TechnicalFaultv1.xsd.xml
+/HelloWorldAPI/com.syngenta.esb.services-registry/wsdl/.meta/~ValidationFaultv1.xsd.xml
+/syngenta-wso2-esb-archetype-1.0.0.jar

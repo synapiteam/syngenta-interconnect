@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="com.syngenta.esb.services" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <call-template description="call EntrySequence" target="conf:syn/sharedResources/sequences/EntrySequenceTemplate.xml">
+                <with-param name="serviceName" value="com.syngenta.esb.services"/>
+            </call-template>
+            <log level="custom" separator=",">
+                <property expression="get-property('YLO_URI')" name="URI"/>
+            </log>
+            <switch description="Http Operation" source="$ctx:YLO_HTTP_METHOD">
+                <case regex="GET">
+                    <log description="Get"/>
+                    <sequence key="GetSequence-com.syngenta.esb.services"/>
+                </case>
+                <case regex="POST">
+                    <log description="Post"/>
+                    <sequence key="PostSequence-com.syngenta.esb.services"/>
+                </case>
+                <case regex="DELETE">
+                    <drop description="Delete"/>
+                </case>
+                <default>
+                    <log description="SOAP Request" level="full" separator=",">
+                        <property name="property_name" value="***************"/>
+                    </log>
+                     <sequence key="SoapSequence-com.syngenta.esb.services"/>
+                </default>
+            </switch>
+           
+            <call-template description="OutSequence" target="conf:syn/sharedResources/sequences/OutSequenceTemplate.xml"/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <call-template description="ErrorHandlerSequence" target="conf:syn/sharedResources/sequences/ErrorHandlerSequenceTemplate.xml">
+                <with-param name="serviceName" value="com.syngenta.esb.services"/>
+            </call-template>
+        </faultSequence>
+    </target>
+    <publishWSDL key="conf:syn/EnterpriseServices/com.syngenta.esb.services/com.syngenta.esb.services.wsdl">
+        <resource key="conf:syn/EnterpriseServices/com.syngenta.esb.services/com.syngenta.esb.services.xsd" location="com.syngenta.esb.services.xsd"/>
+        <resource key="conf:syn/EnterpriseServices/com.syngenta.esb.services/TechnicalFaultv1.xsd" location="TechnicalFaultv1.xsd"/>
+        <resource key="conf:syn/EnterpriseServices/com.syngenta.esb.services/BusinessFaultv1.xsd" location="BusinessFaultv1.xsd"/>
+        <resource key="conf:syn/EnterpriseServices/com.syngenta.esb.services/SecurityFaultv1.xsd" location="SecurityFaultv1.xsd"/>
+        <resource key="conf:syn/EnterpriseServices/com.syngenta.esb.services/ValidationFaultv1.xsd" location="ValidationFaultv1.xsd"/>
+    </publishWSDL>
+</proxy>
