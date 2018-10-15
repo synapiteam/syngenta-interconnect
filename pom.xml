@@ -9,7 +9,6 @@
   <description>EI Artifacts</description>
   <modules>
     <module>HelloWorld</module>
-    <module>HelloWorldAPI</module>
   </modules>
   <build>
     <plugins>
