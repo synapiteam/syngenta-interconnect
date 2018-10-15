@@ -1,0 +1,14 @@
+version: 0.2
+env:
+  variables:
+    SHELL: "/bin/bash"
+phases:
+  build:
+    commands:
+      - yum -y install findutils
+      - chmod +x scripts/package.sh
+      - mvn clean install
+      - scripts/package.sh
+artifacts:
+  files:
+  - '**/*'

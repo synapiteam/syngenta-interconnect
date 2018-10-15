@@ -1,0 +1,16 @@
+version: 0.0
+os: linux
+files:
+  - source: /scripts
+    destination: /tmp/scripts
+  - source: /cars
+    destination: /tmp/deployment
+hooks:
+  BeforeInstall:
+    - location: scripts/clean.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/install_cars.sh
+      timeout: 600
+      runas: root
