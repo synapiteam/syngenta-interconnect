@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="ErrorHandlerSequenceTemplate" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="serviceName"/>
+    <sequence>
+        <log>
+            <property expression="fn:concat('*** On the Generic Error Handler ***, service name--> ',$func:serviceName)" name="ERROR_HANDLER"/>
+        </log>
+        <payloadFactory media-type="xml">
+            <format>
+                <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://garantibank.eu/api/payment/sepapayment/v1">
+                    <soapenv:Body>
+                        <soapenv:Fault>
+                            <faultcode xmlns="">soapenv:Server</faultcode>
+                            <faultstring xmlns="">Internal Server Error</faultstring>
+                            <detail xmlns="">
+                                <v1:TechnicalFault>
+                                    <errorCode>$1</errorCode>
+                                    <errorMessage>$2</errorMessage>
+                                    <description>$3</description>
+                                </v1:TechnicalFault>
+                            </detail>
+                        </soapenv:Fault>
+                    </soapenv:Body>
+                </soapenv:Envelope>
+            </format>
+            <args>
+                <arg evaluator="xml" expression="get-property('ERROR_CODE')"/>
+                <arg evaluator="xml" expression="get-property('ERROR_MESSAGE')"/>
+                <arg evaluator="xml" expression="get-property('ERROR_DETAIL')"/>
+            </args>
+        </payloadFactory>
+        <log level="full"/>
+        <respond/>
+    </sequence>
+</template>

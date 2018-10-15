@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="OutSequenceRootTemplate" xmlns="http://ws.apache.org/ns/synapse">
+    <sequence>
+        <log level="custom" separator=",">
+            <property expression="get-property('YLO_HTTP_METHOD')" name="HTTP_METHOD"/>
+        </log>
+        <filter description="" regex="SOAP_POST" source="get-property('YLO_HTTP_METHOD')">
+            <then>
+                <log level="custom">
+                    <property name="info" value="SOAP RESPONSE"/>
+                </log>
+            </then>
+            <else>
+                <xslt key="conf:syn/sharedResources/xslt/copyAllSubElementsAndRoot.xsl" source="//*[local-name()='Body']/*[1]"/>
+            </else>
+        </filter>
+        <log description="Log Payload" level="custom" separator=",">
+            <property expression="/" name="payload_AT_OUTPUT"/>
+        </log>
+        <respond/>
+    </sequence>
+</template>

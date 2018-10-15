@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="QueryInputAsJSON" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="uri_template_value"/>
+    <sequence>
+        <property description="SET URI Template" expression="$func:uri_template_value" name="YLO_URI_TEMPLATE" scope="default" type="STRING"/>
+        <script description="get-URI Params" function="getPathAndQuery" key="conf:syn/sharedResources/jscripts/UriParamsParser.js" language="js"/>
+    </sequence>
+</template>

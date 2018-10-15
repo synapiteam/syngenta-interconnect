@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="EntrySequenceTemplate_xml" groupId="com.syngenta.esb.services.EsbSharedResources.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>sequences/EntrySequenceTemplate.xml</file>
+            <path>/_system/config/syn/sharedResources/sequences</path>
+            <mediaType>application/vnd.wso2.template</mediaType>
+        </item>
+    </artifact>
+    <artifact name="UriParamsParser_js" groupId="com.syngenta.esb.services.EsbSharedResources.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>jscripts/UriParamsParser.js</file>
+            <path>/_system/config/syn/sharedResources/jscripts</path>
+            <mediaType>application/javascript</mediaType>
+        </item>
+    </artifact>
+    <artifact name="CommissionAmountParser_js" groupId="com.syngenta.esb.services.EsbSharedResources.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>jscripts/CommissionAmountParser.js</file>
+            <path>/_system/config/syn/sharedResources/jscripts</path>
+            <mediaType>application/javascript</mediaType>
+        </item>
+    </artifact>
+    <artifact name="HttpBodyAsSOAP_xml" groupId="com.syngenta.esb.services.EsbSharedResources.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>sequences/HttpBodyAsSOAP.xml</file>
+            <path>/_system/config/syn/sharedResources/sequences</path>
+            <mediaType>application/vnd.wso2.template</mediaType>
+        </item>
+    </artifact>
+    <artifact name="QueryInputAsJSON_xml" groupId="com.syngenta.esb.services.EsbSharedResources.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>sequences/QueryInputAsJSON.xml</file>
+            <path>/_system/config/syn/sharedResources/sequences</path>
+            <mediaType>application/vnd.wso2.template</mediaType>
+        </item>
+    </artifact>
+    <artifact name="OutSequenceTemplate_xml" groupId="com.syngenta.esb.services.EsbSharedResources.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>sequences/OutSequenceTemplate.xml</file>
+            <path>/_system/config/syn/sharedResources/sequences</path>
+            <mediaType>application/vnd.wso2.template</mediaType>
+        </item>
+    </artifact>
+    <artifact name="OutSequenceRootTemplate_xml" groupId="com.syngenta.esb.services.EsbSharedResources.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>sequences/OutSequenceRootTemplate.xml</file>
+            <path>/_system/config/syn/sharedResources/sequences</path>
+            <mediaType>application/vnd.wso2.template</mediaType>
+        </item>
+    </artifact>
+    <artifact name="ConvertEntryStatementsResponse_xsl" groupId="com.syngenta.esb.services.EsbSharedResources.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>xslt/ConvertEntryStatementsResponse.xsl</file>
+            <path>/_system/config/syn/sharedResources/xslt</path>
+            <mediaType>application/xsl+xml</mediaType>
+        </item>
+    </artifact>
+    <artifact name="copyAllSubElements_xsl" groupId="com.syngenta.esb.services.EsbSharedResources.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>xslt/copyAllSubElements.xsl</file>
+            <path>/_system/config/syn/sharedResources/xslt</path>
+            <mediaType>application/xsl+xml</mediaType>
+        </item>
+    </artifact>
+    <artifact name="copyAllSubElementsAndRoot_xsl" groupId="com.syngenta.esb.services.EsbSharedResources.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>xslt/copyAllSubElementsAndRoot.xsl</file>
+            <path>/_system/config/syn/sharedResources/xslt</path>
+            <mediaType>application/xsl+xml</mediaType>
+        </item>
+    </artifact>
+    <artifact name="GenerateCurencyRateCSV_xsl" groupId="com.syngenta.esb.services.EsbSharedResources.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>xslt/GenerateCurencyRateCSV.xsl</file>
+            <path>/_system/config/syn/sharedResources/xslt</path>
+            <mediaType>application/xsl+xml</mediaType>
+        </item>
+    </artifact>
+    <artifact name="ProcessIntraDayTransactions_xsl" groupId="com.syngenta.esb.services.EsbSharedResources.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>xslt/ProcessIntraDayTransactions.xsl</file>
+            <path>/_system/config/syn/sharedResources/xslt</path>
+            <mediaType>application/xsl+xml</mediaType>
+        </item>
+    </artifact>
+    <artifact name="ErrorHandlerSequenceTemplate_xml" groupId="com.syngenta.esb.services.EsbSharedResources.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>sequences/ErrorHandlerSequenceTemplate.xml</file>
+            <path>/_system/config/syn/sharedResources/sequences</path>
+            <mediaType>application/vnd.wso2.template</mediaType>
+        </item>
+    </artifact>
+    <artifact name="ConvertJsonElementsToStrings_js" groupId="com.syngenta.esb.services.EsbSharedResources.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseIntegrator">
+        <item>
+            <file>jscripts/ConvertJsonElementsToStrings.js</file>
+            <path>/_system/config/syn/sharedResources/jscripts</path>
+            <mediaType>application/javascript</mediaType>
+        </item>
+    </artifact>
+</artifacts>

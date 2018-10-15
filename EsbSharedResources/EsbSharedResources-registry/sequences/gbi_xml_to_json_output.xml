@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="syn_xml_to_json_output" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="custom">
+        <property name="Status" value="$$$$$(Converter) SOAP to JSON ******"/>
+        <property expression="/" name="Payload"/>
+    </log>
+    <property description="set returnedPayload" expression="local-name(//*[local-name()='detail']/*[1])" name="returnedPayload" scope="default" type="STRING"/>
+    <log level="custom">
+        <property expression="$ctx:returnedPayload" name="RETURN_PAYLOAD_NAME"/>
+    </log>
+    <switch description="Text or Binary" source="$axis2:messageType">
+        <case regex="application/octet-stream">
+            <log description="Binary" level="custom">
+                <property name="status" value="Returning binary payload"/>
+            </log>
+            <property description="NO_ENTITY_BODY" name="NO_ENTITY_BODY" scope="axis2" type="BOOLEAN" value="false"/>
+        </case>
+        <default>
+            <switch description="" source="$ctx:returnedPayload">
+                <case regex="^$">
+                    <log description="Returned payload is empty" level="custom">
+                        <property name="status" value="Returned payload is empty"/>
+                    </log>
+                </case>
+                <case regex="TechnicalFault">
+                    <property description="Http-500" name="HTTP_SC" scope="axis2" type="STRING" value="500"/>
+                    <property name="HTTP_SC_DESC" scope="axis2" type="STRING" value="Internal Server Error"/>
+                    <payloadFactory media-type="json">
+                        <format>
+	                    $1
+		            </format>
+                        <args>
+                            <arg evaluator="xml" expression="//*[local-name()='detail']/*[1]"/>
+                        </args>
+                    </payloadFactory>
+                    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+                </case>
+                <case regex="BusinessFault">
+                    <property description="HTTP-456" name="HTTP_SC" scope="axis2" type="STRING" value="456"/>
+                    <property name="HTTP_SC_DESC" scope="axis2" type="STRING" value="Business Error"/>
+                    <payloadFactory media-type="json">
+                        <format>
+	                    $1
+	                </format>
+                        <args>
+                            <arg evaluator="xml" expression="//*[local-name()='detail']/*[1]"/>
+                        </args>
+                    </payloadFactory>
+                    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+                </case>
+                <case regex="ValidationFault">
+                    <property description="http-400" name="HTTP_SC" scope="axis2" type="STRING" value="400"/>
+                    <property name="HTTP_SC_DESC" scope="axis2" type="STRING" value="Bad Request"/>
+                    <payloadFactory media-type="json">
+                        <format>
+	                    $1
+	                </format>
+                        <args>
+                            <arg evaluator="xml" expression="//*[local-name()='detail']/*[1]"/>
+                        </args>
+                    </payloadFactory>
+                    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+                </case>
+                <case regex="SecurityFault">
+                    <property description="Http-401" name="HTTP_SC" scope="axis2" type="STRING" value="401"/>
+                    <property name="HTTP_SC_DESC" scope="axis2" type="STRING" value="Unauthorized"/>
+                    <payloadFactory media-type="json">
+                        <format>
+	                 	$1
+	          		</format>
+                        <args>
+                            <arg evaluator="xml" expression="//*[local-name()='detail']/*[1]"/>
+                        </args>
+                    </payloadFactory>
+                    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+                </case>
+                <default>
+                    <property expression="local-name(//*[local-name()='Body']/*[1])" name="returnedPayload" scope="default" type="STRING"/>
+                    <log level="custom">
+                        <property expression="$ctx:returnedPayload" name="RETURN_PAYLOAD_NAME"/>
+                    </log>
+                    <switch description="" source="$ctx:returnedPayload">
+                        <case regex="HttpErrorFault">
+                            <property description="HTTP_SC" expression="//*[local-name()='httpErrorCode']" name="HTTP_SC" scope="axis2" type="STRING"/>
+                            <property description="HTTP_SC_DESC" expression="//*[local-name()='httpErrorMessage']" name="HTTP_SC_DESC" scope="axis2" type="STRING"/>
+                            <payloadFactory media-type="json">
+                                <format>
+			                    $1
+			          		</format>
+                                <args>
+                                    <arg evaluator="xml" expression="//*[local-name()='jsonPayload']"/>
+                                </args>
+                            </payloadFactory>
+                            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+                        </case>
+                        <default>
+                            <payloadFactory description="JSON Response" media-type="json">
+                                <format>
+					            $1
+					        </format>
+                                <args>
+                                    <arg evaluator="xml" expression="//*[local-name()='jsonObject']"/>
+                                </args>
+                            </payloadFactory>
+                            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+                        </default>
+                    </switch>
+                </default>
+            </switch>
+        </default>
+    </switch>
+</sequence>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://syngenta.com/ebo/v1"
+	targetNamespace="http://syngenta.com/ebo/v1" elementFormDefault="unqualified">
+
+	<xsd:complexType name="HttpErrorFault">
+		<xsd:sequence>
+			<xsd:element name="httpErrorCode" type="xsd:string" minOccurs="0"	maxOccurs="1" />
+			<xsd:element name="httpErrorMessage" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="jsonPayload" type="xsd:string" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

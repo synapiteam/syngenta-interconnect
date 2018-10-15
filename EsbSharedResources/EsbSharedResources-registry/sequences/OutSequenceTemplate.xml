@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="OutSequenceTemplate" xmlns="http://ws.apache.org/ns/synapse">
+    <sequence>
+        <log level="custom" separator=",">
+            <property expression="get-property('YLO_HTTP_METHOD')" name="HTTP_METHOD"/>
+        </log>
+        <filter description="" regex="SOAP_POST" source="get-property('YLO_HTTP_METHOD')">
+            <then>
+                <log level="custom">
+                    <property name="info" value="SOAP RESPONSE"/>
+                </log>
+            </then>
+            <else>
+                <filter regex="false" source="$ctx:NO_ENTITY_BODY">
+                    <then>
+                        <log level="custom">
+                            <property expression="name(//*[local-name()='Body']/*[1])" name="wrapper element"/>
+                        </log>
+                        <filter description="remove json wrapper" regex="json.*" source="//*[local-name()='Body']/*[1]">
+                            <then>
+                                <log level="custom" separator=",">
+                                    <property name="Status" value="Calling copyAllSubElements.xsl..."/>
+                                </log>
+                                <xslt key="conf:syn/sharedResources/xslt/copyAllSubElements.xsl" source="//*[local-name()='Body']/*[1]"/>
+                            </then>
+                            <else>
+                                <log level="custom" separator=",">
+                                    <property name="Status" value="Calling copyAllSubElementsAndRoot.xsl..."/>
+                                </log>
+                                <xslt key="conf:syn/sharedResources/xslt/copyAllSubElementsAndRoot.xsl" source="//*[local-name()='Body']/*[1]"/>
+                            </else>
+                        </filter>
+                    </then>
+                    <else/>
+                </filter>
+            </else>
+        </filter>
+        <filter regex="false" source="$ctx:NO_ENTITY_BODY">
+            <then>
+                <log description="Log Payload" level="custom" separator=",">
+                    <property expression="/" name="payload_AT_OUTPUT"/>
+                </log>
+            </then>
+            <else/>
+        </filter>
+        <respond/>
+    </sequence>
+</template>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://syngenta.com/ebo/v1"
+	targetNamespace="http://syngenta.com/ebo/v1" elementFormDefault="unqualified">
+
+	<xsd:complexType name="TechnicalFault">
+		<xsd:annotation>
+			<xsd:documentation>
+			<![CDATA[
+				The Technical fault represents an unexpected error occurred at the infrastructure level.
+				some examples are; Timeout, oracle TableSpace Full
+
+			]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="errorCode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="errorMessage" type="xsd:string" minOccurs="0" />
+			<xsd:element name="instruction" type="xsd:string"	minOccurs="0"/>
+			<xsd:element name="description" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>
