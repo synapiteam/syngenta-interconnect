@@ -8,7 +8,6 @@ phases:
       - yum -y install findutils
       - chmod +x scripts/package.sh
       - mvn clean install
-      - cat scripts/package.sh
       - scripts/package.sh
 artifacts:
   files:
