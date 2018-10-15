@@ -8,7 +8,8 @@
   <name>EI Artifacts</name>
   <description>EI Artifacts</description>
   <modules>
-    <module>HelloWorld</module>
+    <module>EsbSharedResources</module>
+    <module>HelloWorldAPI</module>
   </modules>
   <build>
     <plugins>
