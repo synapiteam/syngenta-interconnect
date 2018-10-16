@@ -8,6 +8,7 @@
   <name>EI Artifacts</name>
   <description>EI Artifacts</description>
   <modules>
+    <module>EsbSharedResources</module>
     <module>SalesForcev1</module>
     <module>HelloWorld</module>
   </modules>
