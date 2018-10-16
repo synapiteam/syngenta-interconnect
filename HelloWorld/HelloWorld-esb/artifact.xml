@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<artifacts>
-    
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="HelloWorldMockResponder" groupId="com.syngenta.esb.services.HelloWorld.HelloWorld.proxy-service" version="1.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/HelloWorldMockResponder.xml</file>
+    </artifact>
+    <artifact name="HelloWorldProxy" groupId="com.syngenta.esb.services.HelloWorld.HelloWorld.proxy-service" version="1.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/HelloWorldProxy.xml</file>
+    </artifact>
+    <artifact name="HelloWorldMockResponderEP" groupId="com.syngenta.esb.services.HelloWorld.HelloWorld.endpoint" version="1.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/HelloWorldMockResponderEP.xml</file>
+    </artifact>
 </artifacts>
