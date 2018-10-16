@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="GetSalesforceContact" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log category="WARN" description="NOT IMPLEMENTED" level="custom">
+        <property name="status" value="NOT IMPLEMENTED: GetSalesforceContact"/>
+        <property expression="$ctx:technicalId" name="technicalId"/>
+        <property expression="$ctx:businessCase" name="businessCase"/>
+        <property expression="$ctx:businessId" name="businessId"/>
+    </log>
+</sequence>

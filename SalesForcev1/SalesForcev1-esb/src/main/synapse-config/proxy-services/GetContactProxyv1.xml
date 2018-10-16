@@ -25,6 +25,8 @@
                 <property expression="$ctx:businessCase" name="businessCase"/>
                 <property expression="$ctx:businessId" name="businessId"/>
             </log>
+            <sequence key="ObtainSalesforceAccessToken"/>
+            <sequence key="GetSalesforceContact"/>
         </inSequence>
         <outSequence>
             <log description="Response" level="custom">
