@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <endpoint name="HelloWorldMockResponderEP" xmlns="http://ws.apache.org/ns/synapse">
-    <address uri="http://ip-172-16-21-84.eu-west-1.compute.internal:8280/services/HelloWorldMockResponder"/>
+    <address uri="https://internal-esb.tst.syngenta.iconnect.services:8243/services/HelloWorldMockResponder"/>
 </endpoint>
