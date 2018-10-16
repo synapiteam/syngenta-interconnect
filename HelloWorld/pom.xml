@@ -12,12 +12,12 @@
     <groupId>services.iconnect</groupId>
     <version>1.0.0</version>
   </parent>
-    <groupId>com.syngenta.esb.services.HelloWorldAPI</groupId>
-    <artifactId>HelloWorldAPI-parent</artifactId>
-    <version>1.0.0</version>
+    <groupId>com.syngenta.esb.services.HelloWorld.HelloWorld</groupId>
+    <artifactId>HelloWorld-parent</artifactId>
+    <version>1.0</version>
     <packaging>pom</packaging>
-    <name>HelloWorldAPI parent project</name>
-    <description>HelloWorldAPI parent projectpackage</description>
+    <name>HelloWorld parent project</name>
+    <description>HelloWorld parent projectpackage</description>
     <scm>
         <connection>scm:git:${scmBaseUrl}</connection>
         <developerConnection>scm:git:${scmBaseUrl}</developerConnection>
@@ -53,7 +53,7 @@
         <test-protocol>http</test-protocol>
         <!-- Fill in the URL to the service under test, i.e. this services main proxy service -->
         <test-context>/services/ReplaceThisServiceName_v1_0</test-context>
-        <soapui-project-filename>develop-HelloWorldAPI-v1-0-soapui.xml</soapui-project-filename>
+        <soapui-project-filename>develop-HelloWorld-v1-0-soapui.xml</soapui-project-filename>
         <pre-test-sleep>30</pre-test-sleep>
     </properties>
     <build>
@@ -563,10 +563,10 @@
         </profile>
     </profiles>
   <modules>
-    <module>HelloWorldAPI-esb</module>
-    <module>HelloWorldAPI-registry</module>
-    <module>HelloWorldAPI-car</module>
-    <module>HelloWorldAPI-test</module>
-    <module>HelloWorldAPI-documentation</module>
+    <module>HelloWorld-esb</module>
+    <module>HelloWorld-registry</module>
+    <module>HelloWorld-car</module>
+    <module>HelloWorld-test</module>
+    <module>HelloWorld-documentation</module>
   </modules>
 </project>

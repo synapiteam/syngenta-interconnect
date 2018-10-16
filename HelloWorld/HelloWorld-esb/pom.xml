@@ -8,15 +8,15 @@
     -->
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.syngenta.esb.services.HelloWorldAPI</groupId>
-		<artifactId>HelloWorldAPI-parent</artifactId>
-		<version>1.0.0</version>
+		<groupId>com.syngenta.esb.services.HelloWorld.HelloWorld</groupId>
+		<artifactId>HelloWorld-parent</artifactId>
+		<version>1.0</version>
 	</parent>
-	<artifactId>HelloWorldAPI-esb</artifactId>
-	<version>1.0.0</version>
+	<artifactId>HelloWorld-esb</artifactId>
+	<version>1.0</version>
 	<packaging>pom</packaging>
-	<name>HelloWorldAPI ESB project</name>
-	<description>HelloWorldAPI-esb ESB project</description>
+	<name>HelloWorld ESB project</name>
+	<description>HelloWorld-esb ESB project</description>
 	<build>
 		<directory>target/capp</directory>
 		<plugins>

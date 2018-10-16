@@ -9,8 +9,8 @@
   <description>EI Artifacts</description>
   <modules>
     <module>EsbSharedResources</module>
-    <module>HelloWorldAPI</module>
     <module>SalesForcev1</module>
+    <module>HelloWorld</module>
   </modules>
   <build>
     <plugins>

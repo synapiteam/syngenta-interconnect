@@ -9,16 +9,16 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.syngenta.esb.services.HelloWorldAPI</groupId>
-		<artifactId>HelloWorldAPI-parent</artifactId>
-		<version>1.0.0</version>
+		<groupId>com.syngenta.esb.services.HelloWorld.HelloWorld</groupId>
+		<artifactId>HelloWorld-parent</artifactId>
+		<version>1.0</version>
 	</parent>
 
-	<artifactId>HelloWorldAPI-test</artifactId>
-	<version>1.0.0</version>
+	<artifactId>HelloWorld-documentation</artifactId>
+	<version>1.0</version>
 
 	<packaging>pom</packaging>
-	<name>HelloWorldAPI Test project</name>
-	<description>HelloWorldAPI-test Test project</description>
+	<name>HelloWorld Documentation project</name>
+	<description>HelloWorld-documentation Documentation project</description>
 
 </project>
