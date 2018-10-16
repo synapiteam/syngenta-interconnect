@@ -3,8 +3,8 @@
     <target>
         <inSequence>
             <property description="technicalId" expression="get-property('MessageID')" name="technicalId" scope="default" type="STRING"/>
-            <property description="businessCase" name="businessCase" scope="default" type="STRING" value="HelloProxy"/>
-            <property description="businessId" expression="//syn:employee/syn:employeeId" name="businessId" scope="default" type="STRING" xmlns:syn="http://syngenta.com"/>
+            <property description="businessCase" name="businessCase" scope="default" type="STRING" value="HelloWorldMockResponder"/>
+            <property description="businessId" expression="//employeeId" name="businessId" scope="default" type="STRING" xmlns:syn="http://syngenta.com"/>
             <log description="Request" level="custom">
                 <property name="status" value="received input request"/>
                 <property expression="$ctx:technicalId" name="technicalId"/>
