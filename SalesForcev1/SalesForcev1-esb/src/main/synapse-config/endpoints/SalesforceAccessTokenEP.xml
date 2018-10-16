@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="SalesforceAccessTokenEP" xmlns="http://ws.apache.org/ns/synapse">
+    <http method="post" uri-template="https://test.salesforce.com/services/oauth2/token?grant_type=password&amp;client_id={uri.var.clientId}&amp;client_secret={uri.var.clientSecret}&amp;username={uri.var.username}&amp;password={uri.var.password}"/>
+</endpoint>

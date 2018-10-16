@@ -1,9 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sequence name="ObtainSalesforceAccessToken" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
-    <log category="WARN" description="NOT IMPLEMENTED" level="custom">
-        <property name="status" value="NOT IMPLEMENTED: ObtainSalesforceAccessToken"/>
+    <log description="Getting Access Token from Salesforce..." level="custom">
+        <property name="status" value="ObtainSalesforceAccessToken: Getting Access Token from Salesforce..."/>
         <property expression="$ctx:technicalId" name="technicalId"/>
         <property expression="$ctx:businessCase" name="businessCase"/>
         <property expression="$ctx:businessId" name="businessId"/>
     </log>
+    <property description="uri.var.clientId" expression="concat(wso2:vault-lookup('uri.var.clientId.1'), wso2:vault-lookup('uri.var.clientId.2'), wso2:vault-lookup('uri.var.clientId.3'))" name="uri.var.clientId" scope="default" type="STRING"/>
+    <property description="uri.var.clientSecret" expression="wso2:vault-lookup('uri.var.clientSecret')" name="uri.var.clientSecret" scope="default" type="STRING"/>
+    <property description="uri.var.username" expression="concat(wso2:vault-lookup('uri.var.username.1'), wso2:vault-lookup('uri.var.username.2'))" name="uri.var.username" scope="default" type="STRING"/>
+    <property description="uri.var.password" expression="concat(wso2:vault-lookup('uri.var.password.1'), wso2:vault-lookup('uri.var.password.2'))" name="uri.var.password" scope="default" type="STRING"/>
+    <call>
+        <endpoint key="SalesforceAccessTokenEP"/>
+    </call>
+    <switch source="$axis2:HTTP_SC">
+        <case regex="200">
+            <log description="...obtained an Access Token from Salesforce" level="custom">
+                <property name="status" value="ObtainSalesforceAccessToken: ...obtained an Access Token from Salesforce"/>
+                <property expression="$ctx:technicalId" name="technicalId"/>
+                <property expression="$ctx:businessCase" name="businessCase"/>
+                <property expression="$ctx:businessId" name="businessId"/>
+            </log>
+        </case>
+        <default>
+            <log description="ERROR" level="full">
+                <property name="status" value="ObtainSalesforceAccessToken: ERROR from Salesforce"/>
+                <property expression="$ctx:technicalId" name="technicalId"/>
+                <property expression="$ctx:businessCase" name="businessCase"/>
+                <property expression="$ctx:businessId" name="businessId"/>
+                <property expression="$axis2:HTTP_SC" name="Http Status Code"/>
+                <property expression="$axis2:HTTP_SC_DESC" name="Http Status Description"/>
+            </log>
+        </default>
+    </switch>
 </sequence>
