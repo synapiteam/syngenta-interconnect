@@ -1,0 +1,109 @@
+swagger: '2.0'
+info:
+  title: SalesForceAPI
+  version: '1.0'
+  description: Connects to Salesforce
+schemes:
+  - https
+basePath: /api/salesforce
+
+responses:
+  Success200Response:
+    description: Success response.
+    schema:
+      type: object
+      properties:
+        body:
+          type: string
+    examples:
+      application/json:
+        message: 'Hello world Luca !!!'
+        
+  ServerError500Response:
+    description: Internal Server Error.
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+    examples:
+      application/json:
+        TechnicalFault:
+          errorCode: '999999'
+          errorMessage: Technical Error Message
+          instruction: This is the instructions
+          description: A detailed description of the issue
+          
+  BadRequest400Response:
+    description: Bad Request
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+    examples:
+      application/json:
+        ValidationFault:
+          errorCode: '999999'
+          errorMessage: This is the error message
+          instruction: This is the instructions
+          
+  Unauthorized401Response:
+    description: Unauthorized
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+    examples:
+      application/json:
+        SecurityFault:
+          errorCode: '99999'
+          errorMessage: This is the error message
+          description: This is the error description
+          
+  Business456Response:
+    description: Business Error
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+    examples:
+      application/json:
+        BusinessFault:
+          errorCode: '999999'
+          errorMessage: this is the error message
+          
+paths:
+  /contacts/{contactId}:
+    get:
+      summary: This endpoint returns the a welcome message
+      description: This endpoint returns the a welcome message
+      operationId: getContactById
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      tags:
+        - Get a contact with a given contactId
+      parameters:
+        - name: contactId
+          in: path
+          required: true
+          type: string
+          description: Contact id is an unique indentifier in the system for a contact
+
+      responses:
+        '200':
+          description: Succesfull update but no response body
+        '400':
+          $ref: '#/responses/BadRequest400Response'
+        '401':
+          $ref: '#/responses/Unauthorized401Response'
+        '404':
+          description: No document with this id and/or revision could be found
+        '456':
+          $ref: '#/responses/Business456Response'
+        '500':
+          $ref: '#/responses/ServerError500Response'

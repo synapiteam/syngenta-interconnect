@@ -1,68 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!--
-================================================================================
-    This file has been generated using Yenlo WSO2 ESB Maven Archetype.
-    For more information: http://www.yenlo.com
-================================================================================
-    -->
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <artifactId>SalesForcev1-parent</artifactId>
-        <groupId>com.syngenta.esb.services.SalesForce.SalesForcev1</groupId>
-        <version>1.0</version>
-    </parent>
-    <artifactId>SalesForcev1-car</artifactId>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.syngenta.esb.services.SalesForce.SalesForcev1</groupId>
+    <artifactId>SalesForcev1-parent</artifactId>
     <version>1.0</version>
-    <packaging>carbon/application</packaging>
-    <name>SalesForcev1 CAR project</name>
-    <description>SalesForcev1 CAR Project containing CAR deployment artifact</description>
-    <properties>
-        <maven.car.deploy.skip>false</maven.car.deploy.skip>
-    </properties>
-    <build>
+  </parent>
+  <groupId>com.syngenta.esb.services.SalesForce.SalesForcev1</groupId>
+  <artifactId>SalesForcev1-car</artifactId>
+  <version>1.0</version>
+  <packaging>carbon/application</packaging>
+  <name>SalesForcev1 CAR project</name>
+  <description>SalesForcev1 CAR Project containing CAR deployment artifact</description>
+  <properties>
+    <artifact.types>jaggery/app=zip,synapse/priority-executor=xml,synapse/inbound-endpoint=xml,service/rule=aar,synapse/message-store=xml,event/stream=json,service/meta=xml,datasource/datasource=xml,synapse/proxy-service=xml,bpel/workflow=zip,synapse/sequence=xml,synapse/endpointTemplate=xml,carbon/application=car,wso2/gadget=dar,synapse/api=xml,synapse/event-source=xml,synapse/message-processors=xml,event/receiver=xml,lib/dataservice/validator=jar,synapse/template=xml,synapse/endpoint=xml,lib/carbon/ui=jar,lib/synapse/mediator=jar,event/publisher=xml,synapse/local-entry=xml,synapse/task=xml,webapp/jaxws=war,registry/resource=zip,synapse/configuration=xml,service/axis2=aar,synapse/lib=zip,synapse/sequenceTemplate=xml,event/execution-plan=siddhiql,service/dataservice=dbs,web/application=war,lib/library/bundle=jar</artifact.types>
+    <maven.car.deploy.skip>false</maven.car.deploy.skip>
+    <com.syngenta.esb.services.SalesForce.SalesForcev1.proxy-service_._GetContactProxyv1>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.proxy-service_._GetContactProxyv1>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>com.syngenta.esb.services.SalesForce.SalesForcev1.proxy-service</groupId>
+      <artifactId>GetContactProxyv1</artifactId>
+      <version>1.0</version>
+      <type>xml</type>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <configuration>
+          <buildcommands />
+          <projectnatures>
+            <projectnature>org.wso2.developerstudio.eclipse.distribution.project.nature</projectnature>
+          </projectnatures>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.wso2.maven</groupId>
+        <artifactId>maven-car-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.wso2.maven</groupId>
+        <artifactId>maven-car-deploy-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+  <profiles>
+    <profile>
+      <id>mock</id>
+      <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
-            <plugin>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <configuration>
-                    <buildcommands/>
-                    <projectnatures>
-                        <projectnature>org.wso2.developerstudio.eclipse.distribution.project.nature</projectnature>
-                    </projectnatures>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.wso2.maven</groupId>
-                <artifactId>maven-car-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.wso2.maven</groupId>
-                <artifactId>maven-car-deploy-plugin</artifactId>
-            </plugin>
+          <plugin>
+            <groupId>org.wso2.maven</groupId>
+            <artifactId>maven-car-deploy-plugin</artifactId>
+            <version>${maven-car-deploy-plugin.version}</version>
+            <executions>
+              <execution>
+                <id>deployThisCar</id>
+                <phase>pre-integration-test</phase>
+                <goals>
+                  <goal>deploy-car</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
         </plugins>
-    </build>
-    <profiles>
-        <profile>
-            <id>mock</id>
-            <build>
-                <finalName>${project.artifactId}</finalName>
-                <plugins>
-                    <plugin>
-                        <groupId>org.wso2.maven</groupId>
-                        <artifactId>maven-car-deploy-plugin</artifactId>
-                        <version>${maven-car-deploy-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>deployThisCar</id>
-                                <phase>pre-integration-test</phase>
-                                <goals>
-                                    <goal>deploy-car</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+      </build>
+    </profile>
+  </profiles>
 </project>

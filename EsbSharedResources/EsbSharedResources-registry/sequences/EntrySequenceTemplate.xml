@@ -2,13 +2,13 @@
 <template name="EntrySequenceTemplate" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="serviceName"/>
     <sequence>
-        <log description="EntryLog" level="custom" separator=",">
+        <log category="DEBUG" description="EntryLog" level="custom" separator=",">
             <property expression="fn:concat('*** entrySequence*** service name--> ', $func:serviceName)" name="message"/>
         </log>
         <property description="set YLO_URI" expression="get-property('To')" name="YLO_URI" scope="default" type="STRING"/>
         <property description="set YLO_HTTP_METHOD" expression="get-property('axis2', 'HTTP_METHOD')" name="YLO_HTTP_METHOD" scope="default" type="STRING"/>
         <property description="Set YLO_OPERATION_NAME" expression="local-name(//*[local-name()='Body']/*[1])" name="YLO_OPERATION_NAME" scope="default" type="STRING"/>
-        <log description="" level="custom">
+        <log category="DEBUG" description="" level="custom">
             <property expression="get-property('YLO_OPERATION_NAME')" name="OPERATION_NAME-->"/>
             <property expression="get-property('YLO_HTTP_METHOD')" name="HTTP_METHOD-->"/>
             <property expression="get-property('YLO_URI')" name="YLO_URI-->"/>
@@ -29,23 +29,23 @@
                 <respond/>
             </case>
             <case regex="jsonObject">
-                <log description="Post_Patch_PUT request" level="custom" separator=",">
+                <log category="DEBUG" description="Post_Patch_PUT request" level="custom" separator=",">
                     <property name="OPERATION_REQUEST" value="&lt;&lt;&lt; JSON Payload - POST | PATCH | PUT REQUEST >>>"/>
                 </log>
             </case>
             <default>
                 <filter description="" regex="^$" source="get-property('YLO_OPERATION_NAME')">
                     <then>
-                        <log description="GET request" level="custom" separator=",">
+                        <log category="DEBUG" description="GET request" level="custom" separator=",">
                             <property expression="fn:concat(get-property('YLO_HTTP_METHOD'), ' REQUEST')" name="OPERATION_REQUEST"/>
                         </log>
                     </then>
                     <else>
-                        <log description="SOAP request" level="custom" separator=",">
+                        <log category="DEBUG" description="SOAP request" level="custom" separator=",">
                             <property name="OPERATION_REQUEST" value="SOAP REQUEST"/>
                         </log>
                         <property description="set YLO_HTTP_METHOD" name="YLO_HTTP_METHOD" scope="default" type="STRING" value="SOAP_POST"/>
-                        <log description="YLO_HTTP_METHOD" level="custom">
+                        <log category="DEBUG" description="YLO_HTTP_METHOD" level="custom">
                             <property expression="get-property('YLO_HTTP_METHOD')" name="YLO_HTTP_METHOD"/>
                         </log>
                     </else>
