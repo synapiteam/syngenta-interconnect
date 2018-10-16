@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--
+================================================================================
+    This file has been generated using Yenlo WSO2 ESB Maven Archetype.
+    For more information: http://www.yenlo.com
+================================================================================
+    -->
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.syngenta.esb.services.SalesForce.SalesForcev1</groupId>
+		<artifactId>SalesForcev1-parent</artifactId>
+		<version>1.0</version>
+	</parent>
+
+	<artifactId>SalesForcev1-documentation</artifactId>
+	<version>1.0</version>
+
+	<packaging>pom</packaging>
+	<name>SalesForcev1 Documentation project</name>
+	<description>SalesForcev1-documentation Documentation project</description>
+
+</project>

@@ -10,6 +10,7 @@
   <modules>
     <module>EsbSharedResources</module>
     <module>HelloWorldAPI</module>
+    <module>SalesForcev1</module>
   </modules>
   <build>
     <plugins>
