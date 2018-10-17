@@ -2,11 +2,11 @@
 <sequence name="ObtainSalesforceAccessToken" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
     <payloadFactory description="Dummy Payload" media-type="xml">
         <format>
-            <inline xmlns=""/>
+            <dummy xmlns=""/>
         </format>
         <args/>
     </payloadFactory>
-    <cache collector="false" description="Access Token" maxMessageSize="2000" timeout="60">
+    <cache collector="false" description="Access Token" maxMessageSize="2000" timeout="120">
         <onCacheHit>
             <property description="accessToken" expression="//access_token" name="accessToken" scope="default" type="STRING"/>
             <log description="Retrieving Access Token from Cache" level="custom">

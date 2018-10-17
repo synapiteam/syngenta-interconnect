@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sequence name="ExecuteOperation" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
-    <enrich description="Restore Payload">
+    <enrich description="Restore orinalPayload">
         <source clone="false" property="originalPayload" type="property"/>
         <target type="body"/>
     </enrich>
@@ -13,12 +13,13 @@
                 <property name="status" value="query input:"/>
                 <property expression="$ctx:YLO_URI_PARAMS" name="URL Params"/>
             </log>
+            <property description="contactId" expression="//contactId" name="contactId" scope="default" type="STRING"/>
             <property description="technicalId" expression="get-property('MessageID')" name="technicalId" scope="default" type="STRING"/>
             <property description="businessCase" name="businessCase" scope="default" type="STRING" value="ContactManagementProxyv1"/>
-            <property description="businessId" expression="//contactId" name="businessId" scope="default" type="STRING"/>
+            <property description="businessId" expression="$ctx:contactId" name="businessId" scope="default" type="STRING"/>
             <log description="Request" level="custom">
                 <property name="status" value="GetContactById Request input"/>
-                <property expression="//contactId" name="contactId"/>
+                <property expression="$ctx:contactId" name="contactId"/>
                 <property expression="$ctx:technicalId" name="technicalId"/>
                 <property expression="$ctx:businessCase" name="businessCase"/>
                 <property expression="$ctx:businessId" name="businessId"/>
