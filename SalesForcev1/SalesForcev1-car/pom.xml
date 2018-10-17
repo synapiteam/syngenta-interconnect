@@ -14,6 +14,7 @@
   <name>SalesForcev1 CAR project</name>
   <description>SalesForcev1 CAR Project containing CAR deployment artifact</description>
   <properties>
+    <com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceGetContactByIdEP>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceGetContactByIdEP>
     <maven.car.deploy.skip>false</maven.car.deploy.skip>
     <com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._ExecuteOperation>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._ExecuteOperation>
     <com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceAccessTokenEP>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceAccessTokenEP>
@@ -50,6 +51,12 @@
     <dependency>
       <groupId>com.syngenta.esb.services.SalesForce.SalesForcev1.sequence</groupId>
       <artifactId>ObtainSalesforceAccessToken</artifactId>
+      <version>1.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint</groupId>
+      <artifactId>SalesforceGetContactByIdEP</artifactId>
       <version>1.0</version>
       <type>xml</type>
     </dependency>

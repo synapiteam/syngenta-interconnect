@@ -14,4 +14,7 @@
     <artifact name="ExecuteOperation" groupId="com.syngenta.esb.services.SalesForce.SalesForcev1.sequence" version="1.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/sequences/ExecuteOperation.xml</file>
     </artifact>
+    <artifact name="SalesforceGetContactByIdEP" groupId="com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint" version="1.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/SalesforceGetContactByIdEP.xml</file>
+    </artifact>
 </artifacts>
