@@ -69,7 +69,12 @@
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://Luca-Yenlo:8282/services/HelloWorldProxy.HelloWorldProxyHttpSoap11Endpoint</con:endpoint><con:endpoint>https://Luca-Yenlo:8245/services/HelloWorldProxy.HelloWorldProxyHttpsSoap11Endpoint</con:endpoint></con:endpoints><con:operation id="e9e0e713-9040-46ff-bffd-7db87c452d9f" isOneWay="false" action="urn:mediate" name="mediate" bindingOperationName="mediate" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2096bd9f-c7c7-49dd-ae0a-d5e850bff053" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://Luca-Yenlo:8282/services/HelloWorldProxy.HelloWorldProxyHttpSoap11Endpoint</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-   <soapenv:Header/>
+   <soapenv:Header>
+   	<syngentaCustomHeader>
+		<technicalId>1234567897654321</technicalId>
+		<businessId>222222</businessId>
+	</syngentaCustomHeader>
+   </soapenv:Header>
    <soapenv:Body>
    	<employee>
    		<employeeId>222222</employeeId>
