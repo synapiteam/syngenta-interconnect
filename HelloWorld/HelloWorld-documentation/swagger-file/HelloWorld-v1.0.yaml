@@ -6,7 +6,7 @@ info:
 schemes:
   - https
 host: circleoftrust.internet-box.ch
-basePath: /api/hello/1.0
+basePath: /api/hello
 
 definitions:
   employee:
