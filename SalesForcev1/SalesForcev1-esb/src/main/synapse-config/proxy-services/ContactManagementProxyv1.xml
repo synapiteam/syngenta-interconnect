@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="ContactManagementProxyv1" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <call-template description="call EntrySequence" target="conf:syn/sharedResources/sequences/EntrySequenceTemplate.xml">
+                <with-param name="serviceName" value="ContactManagementProxyv1"/>
+            </call-template>
+            <enrich description="Save originalPayload">
+                <source clone="false" type="body"/>
+                <target property="originalPayload" type="property"/>
+            </enrich>
+            <sequence key="ExecuteOperation"/>
+        </inSequence>
+        <outSequence>
+            <log description="Response" level="custom">
+                <property name="status" value="E2E sending output response"/>
+                <property expression="$ctx:technicalId" name="technicalId"/>
+                <property expression="$ctx:businessCase" name="businessCase"/>
+                <property expression="$ctx:businessId" name="businessId"/>
+            </log>
+            <send/>
+        </outSequence>
+        <faultSequence>
+            <log category="ERROR" description="ERROR" level="full">
+                <property expression="$ctx:ERROR_CODE" name="ERROR_CODE"/>
+                <property expression="$ctx:ERROR_DETAIL" name="ERROR_DETAIL"/>
+                <property expression="$ctx:ERROR_MESSAGE" name="ERROR_MESSAGE"/>
+                <property expression="$ctx:ERROR_EXCEPTION" name="ERROR_EXCEPTION"/>
+            </log>
+        </faultSequence>
+    </target>
+</proxy>
