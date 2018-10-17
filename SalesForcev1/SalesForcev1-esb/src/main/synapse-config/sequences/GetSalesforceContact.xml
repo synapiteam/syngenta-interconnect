@@ -6,4 +6,5 @@
         <property expression="$ctx:businessCase" name="businessCase"/>
         <property expression="$ctx:businessId" name="businessId"/>
     </log>
+    <respond/>
 </sequence>

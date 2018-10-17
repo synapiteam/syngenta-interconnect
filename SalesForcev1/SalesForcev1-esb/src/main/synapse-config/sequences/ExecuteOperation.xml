@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sequence name="ExecuteOperation" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <enrich description="Restore Payload">
+        <source clone="false" property="originalPayload" type="property"/>
+        <target type="body"/>
+    </enrich>
     <switch source="$ctx:YLO_URI">
         <case regex="/services/ContactManagementProxyv1/contacts/.*">
             <call-template description="get QueryInput as JSON" target="conf:syn/sharedResources/sequences/QueryInputAsJSON.xml">
@@ -19,7 +23,6 @@
                 <property expression="$ctx:businessCase" name="businessCase"/>
                 <property expression="$ctx:businessId" name="businessId"/>
             </log>
-            <sequence key="ObtainSalesforceAccessToken"/>
             <sequence key="GetSalesforceContact"/>
         </case>
         <default>
