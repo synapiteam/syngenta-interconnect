@@ -8,9 +8,10 @@
         <property expression="$ctx:businessCase" name="businessCase"/>
         <property expression="$ctx:businessId" name="businessId"/>
     </log>
-    <header description="Authorization" expression="concat('Bearer ', $ctx:accessToken)" name="Authorization" scope="transport"/>
+    <header expression="concat('Bearer ', $ctx:accessToken)" name="Authorization" scope="transport"/>
     <property description="uri.var.contactId" expression="$ctx:contactId" name="uri.var.contactId" scope="default" type="STRING"/>
-    <call>
+    <property description="YLO_RESPOND" name="YLO_RESPOND" scope="default" type="BOOLEAN" value="true"/>
+    <send>
         <endpoint key="SalesforceGetContactByIdEP"/>
-    </call>
+    </send>
 </sequence>
