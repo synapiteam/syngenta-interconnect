@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sequence name="ObtainSalesforceAccessToken" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
-    <log category="DEBUG" description="Getting Access Token from Salesforce..." level="custom">
+    <log description="Getting Access Token from Salesforce..." level="custom">
         <property name="status" value="ObtainSalesforceAccessToken: Getting Access Token from Salesforce..."/>
         <property expression="$ctx:technicalId" name="technicalId"/>
         <property expression="$ctx:businessCase" name="businessCase"/>
@@ -15,7 +15,7 @@
     </call>
     <switch source="$axis2:HTTP_SC">
         <case regex="200">
-            <log category="DEBUG" description="...obtained an Access Token from Salesforce" level="custom">
+            <log description="...obtained an Access Token from Salesforce" level="custom">
                 <property name="status" value="ObtainSalesforceAccessToken: ...obtained an Access Token from Salesforce"/>
                 <property expression="$ctx:technicalId" name="technicalId"/>
                 <property expression="$ctx:businessCase" name="businessCase"/>
