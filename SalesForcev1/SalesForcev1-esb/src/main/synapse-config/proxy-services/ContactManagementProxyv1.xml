@@ -9,49 +9,34 @@
                 <source clone="false" type="body"/>
                 <target property="originalPayload" type="property"/>
             </enrich>
-            <property description="YLO_RESPOND" name="YLO_RESPOND" scope="default" type="BOOLEAN" value="false"/>
-            <sequence key="ObtainSalesforceAccessToken"/>
-        </inSequence>
-        <outSequence>
-            <log description="on the outSequence" level="custom">
-                <property name="status" value="on the outSequence"/>
-                <property expression="$ctx:YLO_RESPOND" name="YLO_RESPOND"/>
-            </log>
-            <switch source="$ctx:YLO_RESPOND">
-                <case regex="false">
-                    <switch source="$axis2:HTTP_SC">
-                        <case regex="200">
-                            <property description="accessToken" expression="//access_token" name="accessToken" scope="default" type="STRING"/>
-                            <log description="...obtained an Access Token from Salesforce" level="custom">
-                                <property name="status" value="ObtainSalesforceAccessToken: ...obtained an Access Token from Salesforce. Storing Access Token to Cache"/>
-                                <property expression="$ctx:accessToken" name="accessToken"/>
-                            </log>
-                            <cache collector="true"/>
-                            <sequence key="ExecuteOperation"/>
-                        </case>
-                        <default>
-                            <log category="ERROR" description="ERROR" level="full">
-                                <property name="status" value="ObtainSalesforceAccessToken: ERROR from Salesforce"/>
-                                <property expression="$ctx:technicalId" name="technicalId"/>
-                                <property expression="$ctx:businessCase" name="businessCase"/>
-                                <property expression="$ctx:businessId" name="businessId"/>
-                                <property expression="$axis2:HTTP_SC" name="Http Status Code"/>
-                                <property expression="$axis2:HTTP_SC_DESC" name="Http Status Description"/>
-                            </log>
-                            <payloadFactory description="Error Response" media-type="xml">
-                                <format>
-                                    <errorCode>500</errorCode>
-                                </format>
-                                <args/>
-                            </payloadFactory>
-                            <property description="HTTP_SC 500" name="HTTP_SC" scope="axis2" type="STRING" value="500"/>
-                        </default>
-                    </switch>
+            <call>
+                <endpoint key="InternalTokenEndpoint"/>
+            </call>
+            <switch source="$axis2:HTTP_SC">
+                <case regex="200">
+                    <property description="accessToken" expression="//access_token" name="accessToken" scope="default" type="STRING"/>
+                    <log description="Retrieving Access Token" level="custom">
+                        <property name="status" value="Retrieving Access Token"/>
+                        <property expression="$ctx:accessToken" name="accessToken"/>
+                    </log>
+                    <sequence key="ExecuteOperation"/>
                 </case>
                 <default>
-                    <log description="YLO_RESPOND is true" level="custom">
-                        <property name="status" value="YLO_RESPOND is true"/>
+                    <log category="ERROR" description="ERROR" level="full">
+                        <property name="status" value="ObtainSalesforceAccessToken: ERROR from Salesforce"/>
+                        <property expression="$ctx:technicalId" name="technicalId"/>
+                        <property expression="$ctx:businessCase" name="businessCase"/>
+                        <property expression="$ctx:businessId" name="businessId"/>
+                        <property expression="$axis2:HTTP_SC" name="Http Status Code"/>
+                        <property expression="$axis2:HTTP_SC_DESC" name="Http Status Description"/>
                     </log>
+                    <payloadFactory description="Error Response" media-type="xml">
+                        <format>
+                            <errorCode>500</errorCode>
+                        </format>
+                        <args/>
+                    </payloadFactory>
+                    <property description="HTTP_SC 500" name="HTTP_SC" scope="axis2" type="STRING" value="500"/>
                 </default>
             </switch>
             <log description="Response" level="custom">
@@ -60,8 +45,9 @@
                 <property expression="$ctx:businessCase" name="businessCase"/>
                 <property expression="$ctx:businessId" name="businessId"/>
             </log>
-            <send/>
-        </outSequence>
+            <respond/>
+        </inSequence>
+        <outSequence/>
         <faultSequence>
             <log category="ERROR" description="ERROR" level="full">
                 <property expression="$ctx:ERROR_CODE" name="ERROR_CODE"/>

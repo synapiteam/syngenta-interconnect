@@ -11,7 +11,7 @@
     <header expression="concat('Bearer ', $ctx:accessToken)" name="Authorization" scope="transport"/>
     <property description="uri.var.contactId" expression="$ctx:contactId" name="uri.var.contactId" scope="default" type="STRING"/>
     <property description="YLO_RESPOND" name="YLO_RESPOND" scope="default" type="BOOLEAN" value="true"/>
-    <send>
+    <call>
         <endpoint key="SalesforceGetContactByIdEP"/>
-    </send>
+    </call>
 </sequence>
