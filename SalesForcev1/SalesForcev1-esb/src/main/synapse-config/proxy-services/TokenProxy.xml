@@ -27,11 +27,8 @@
                 </protocol>
                 <implementation maxSize="1000"/>
             </cache>
-            <log description="Getting Access Token from Salesforce..." level="custom">
+            <log category="DEBUG" description="Getting Access Token from Salesforce..." level="custom">
                 <property name="status" value="ObtainSalesforceAccessToken: Getting Access Token from Salesforce..."/>
-                <property expression="$ctx:technicalId" name="technicalId"/>
-                <property expression="$ctx:businessCase" name="businessCase"/>
-                <property expression="$ctx:businessId" name="businessId"/>
             </log>
             <property description="uri.var.clientId" expression="concat(wso2:vault-lookup('uri.var.clientId.1'), wso2:vault-lookup('uri.var.clientId.2'), wso2:vault-lookup('uri.var.clientId.3'))" name="uri.var.clientId" scope="default" type="STRING"/>
             <property description="uri.var.clientSecret" expression="wso2:vault-lookup('uri.var.clientSecret')" name="uri.var.clientSecret" scope="default" type="STRING"/>
@@ -45,7 +42,7 @@
             <switch source="$axis2:HTTP_SC">
                 <case regex="200">
                     <property description="accessToken" expression="//access_token" name="accessToken" scope="default" type="STRING"/>
-                    <log description="...obtained an Access Token from Salesforce" level="custom">
+                    <log description="Got a new Access Token from Salesforce" level="custom">
                         <property name="status" value="ObtainSalesforceAccessToken: ...obtained an Access Token from Salesforce. Storing Access Token to Cache"/>
                         <property expression="$ctx:accessToken" name="accessToken"/>
                     </log>
@@ -54,9 +51,6 @@
                 <default>
                     <log category="ERROR" description="ERROR" level="full">
                         <property name="status" value="ObtainSalesforceAccessToken: ERROR from Salesforce"/>
-                        <property expression="$ctx:technicalId" name="technicalId"/>
-                        <property expression="$ctx:businessCase" name="businessCase"/>
-                        <property expression="$ctx:businessId" name="businessId"/>
                         <property expression="$axis2:HTTP_SC" name="Http Status Code"/>
                         <property expression="$axis2:HTTP_SC_DESC" name="Http Status Description"/>
                     </log>
@@ -69,11 +63,8 @@
                     <property description="HTTP_SC 500" name="HTTP_SC" scope="axis2" type="STRING" value="500"/>
                 </default>
             </switch>
-            <log description="Response" level="custom">
-                <property name="status" value="E2E sending output response"/>
-                <property expression="$ctx:technicalId" name="technicalId"/>
-                <property expression="$ctx:businessCase" name="businessCase"/>
-                <property expression="$ctx:businessId" name="businessId"/>
+            <log category="DEBUG" description="Response" level="custom">
+                <property name="status" value="sending output response"/>
             </log>
             <send/>
         </outSequence>

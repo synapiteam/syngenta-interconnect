@@ -15,7 +15,7 @@
         </log>
         <switch source="$ctx:YLO_OPERATION_NAME">
             <case regex="echo">
-                <log separator=",">
+                <log category="DEBUG" separator=",">
                     <property name="property_name" value="echo service request"/>
                 </log>
                 <payloadFactory description="echoResponse" media-type="xml">

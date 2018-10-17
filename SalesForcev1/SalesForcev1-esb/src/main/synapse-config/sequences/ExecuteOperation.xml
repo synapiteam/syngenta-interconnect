@@ -4,12 +4,13 @@
         <source clone="false" property="originalPayload" type="property"/>
         <target type="body"/>
     </enrich>
+    <header expression="concat('Bearer ', $ctx:accessToken)" name="Authorization" scope="transport"/>
     <switch source="$ctx:YLO_URI">
         <case regex="/services/ContactManagementProxyv1/contacts/.*">
             <call-template description="get QueryInput as JSON" target="conf:syn/sharedResources/sequences/QueryInputAsJSON.xml">
                 <with-param name="uri_template_value" value="/services/ContactManagementProxyv1/contacts/{contactId}"/>
             </call-template>
-            <log description="query input" level="custom" separator=",">
+            <log category="DEBUG" description="query input" level="custom" separator=",">
                 <property name="status" value="query input:"/>
                 <property expression="$ctx:YLO_URI_PARAMS" name="URL Params"/>
             </log>
@@ -17,7 +18,7 @@
             <property description="technicalId" expression="get-property('MessageID')" name="technicalId" scope="default" type="STRING"/>
             <property description="businessCase" name="businessCase" scope="default" type="STRING" value="ContactManagementProxyv1"/>
             <property description="businessId" expression="$ctx:contactId" name="businessId" scope="default" type="STRING"/>
-            <log description="Request" level="custom">
+            <log category="DEBUG" description="Request" level="custom">
                 <property name="status" value="GetContactById Request input"/>
                 <property expression="$ctx:contactId" name="contactId"/>
                 <property expression="$ctx:technicalId" name="technicalId"/>
@@ -27,7 +28,7 @@
             <sequence key="GetSalesforceContact"/>
         </case>
         <default>
-            <log description="ERROR" separator=",">
+            <log category="ERROR" description="ERROR" separator=",">
                 <property name="ERROR" value="Invalid input URI Template"/>
                 <property expression="$ctx:YLO_URI" name="uri_template_value"/>
                 <property expression="$ctx:technicalId" name="technicalId"/>

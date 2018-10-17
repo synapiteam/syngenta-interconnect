@@ -8,10 +8,16 @@
         <property expression="$ctx:businessCase" name="businessCase"/>
         <property expression="$ctx:businessId" name="businessId"/>
     </log>
-    <header expression="concat('Bearer ', $ctx:accessToken)" name="Authorization" scope="transport"/>
     <property description="uri.var.contactId" expression="$ctx:contactId" name="uri.var.contactId" scope="default" type="STRING"/>
     <property description="YLO_RESPOND" name="YLO_RESPOND" scope="default" type="BOOLEAN" value="true"/>
     <call>
         <endpoint key="SalesforceGetContactByIdEP"/>
     </call>
+    <log description="...got Contact By Id from Salesforce" level="custom">
+        <property name="status" value="...got Contact By Id from Salesforce"/>
+        <property expression="$ctx:technicalId" name="technicalId"/>
+        <property expression="$ctx:businessCase" name="businessCase"/>
+        <property expression="$ctx:businessId" name="businessId"/>
+        <property expression="string-length(/)" name="responseLength"/>
+    </log>
 </sequence>

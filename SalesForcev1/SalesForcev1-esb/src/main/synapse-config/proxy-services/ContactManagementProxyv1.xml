@@ -15,7 +15,7 @@
             <switch source="$axis2:HTTP_SC">
                 <case regex="200">
                     <property description="accessToken" expression="//access_token" name="accessToken" scope="default" type="STRING"/>
-                    <log description="Retrieving Access Token" level="custom">
+                    <log category="DEBUG" description="Retrieving Access Token" level="custom">
                         <property name="status" value="Retrieving Access Token"/>
                         <property expression="$ctx:accessToken" name="accessToken"/>
                     </log>
@@ -40,7 +40,7 @@
                 </default>
             </switch>
             <log description="Response" level="custom">
-                <property name="status" value="E2E sending output response"/>
+                <property name="status" value="sending output response"/>
                 <property expression="$ctx:technicalId" name="technicalId"/>
                 <property expression="$ctx:businessCase" name="businessCase"/>
                 <property expression="$ctx:businessId" name="businessId"/>
