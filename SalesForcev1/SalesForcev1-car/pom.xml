@@ -14,13 +14,15 @@
   <name>SalesForcev1 CAR project</name>
   <description>SalesForcev1 CAR Project containing CAR deployment artifact</description>
   <properties>
+    <com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceSearchContactsEP>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceSearchContactsEP>
     <com.syngenta.esb.services.SalesForce.SalesForcev1.proxy-service_._ContactManagementProxyv1>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.proxy-service_._ContactManagementProxyv1>
     <artifact.types>jaggery/app=zip,synapse/priority-executor=xml,synapse/inbound-endpoint=xml,service/rule=aar,synapse/message-store=xml,event/stream=json,service/meta=xml,datasource/datasource=xml,synapse/proxy-service=xml,bpel/workflow=zip,synapse/sequence=xml,synapse/endpointTemplate=xml,carbon/application=car,wso2/gadget=dar,synapse/api=xml,synapse/event-source=xml,synapse/message-processors=xml,event/receiver=xml,lib/dataservice/validator=jar,synapse/template=xml,synapse/endpoint=xml,lib/carbon/ui=jar,lib/synapse/mediator=jar,event/publisher=xml,synapse/local-entry=xml,synapse/task=xml,webapp/jaxws=war,registry/resource=zip,synapse/configuration=xml,service/axis2=aar,synapse/lib=zip,synapse/sequenceTemplate=xml,event/execution-plan=siddhiql,service/dataservice=dbs,web/application=war,lib/library/bundle=jar</artifact.types>
     <maven.car.deploy.skip>false</maven.car.deploy.skip>
     <com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._InternalTokenEndpoint>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._InternalTokenEndpoint>
-    <com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceAccessTokenEP>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceAccessTokenEP>
     <com.syngenta.esb.services.SalesForce.SalesForcev1.proxy-service_._TokenProxy>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.proxy-service_._TokenProxy>
-    <com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._GetSalesforceContact>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._GetSalesforceContact>
+    <com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceAccessTokenEP>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceAccessTokenEP>
+    <com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._GetContactById>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._GetContactById>
+    <com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._SearchContacts>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._SearchContacts>
     <com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._ExecuteOperation>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._ExecuteOperation>
     <com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceGetContactByIdEP>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceGetContactByIdEP>
   </properties>
@@ -63,7 +65,19 @@
     </dependency>
     <dependency>
       <groupId>com.syngenta.esb.services.SalesForce.SalesForcev1.sequence</groupId>
-      <artifactId>GetSalesforceContact</artifactId>
+      <artifactId>GetContactById</artifactId>
+      <version>1.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint</groupId>
+      <artifactId>SalesforceSearchContactsEP</artifactId>
+      <version>1.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.syngenta.esb.services.SalesForce.SalesForcev1.sequence</groupId>
+      <artifactId>SearchContacts</artifactId>
       <version>1.0</version>
       <type>xml</type>
     </dependency>

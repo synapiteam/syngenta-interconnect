@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="SearchContacts" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Search Contacts from Salesforce..." level="custom">
+        <property name="status" value="Search Contacts from Salesforce..."/>
+        <property expression="$ctx:accessToken" name="accessToken"/>
+        <property expression="$ctx:query" name="query"/>
+        <property expression="$ctx:technicalId" name="technicalId"/>
+        <property expression="$ctx:businessCase" name="businessCase"/>
+        <property expression="$ctx:businessId" name="businessId"/>
+    </log>
+    <property description="uri.var.query" expression="$ctx:query" name="uri.var.query" scope="default" type="STRING"/>
+    <call>
+        <endpoint key="SalesforceSearchContactsEP"/>
+    </call>
+    <log description="...got Search Contacts response from Salesforce" level="custom">
+        <property name="status" value="...got Search Contacts response from Salesforce"/>
+        <property expression="$ctx:technicalId" name="technicalId"/>
+        <property expression="$ctx:businessCase" name="businessCase"/>
+        <property expression="$ctx:businessId" name="businessId"/>
+        <property expression="string-length(/)" name="responseLength"/>
+    </log>
+</sequence>

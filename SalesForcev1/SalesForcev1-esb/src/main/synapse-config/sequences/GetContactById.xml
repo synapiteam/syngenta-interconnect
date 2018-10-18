@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sequence name="GetSalesforceContact" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+<sequence name="GetContactById" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
     <log description="Getting Contact By Id from Salesforce..." level="custom">
         <property name="status" value="Getting Contact By Id from Salesforce..."/>
         <property expression="$ctx:accessToken" name="accessToken"/>
@@ -9,7 +9,6 @@
         <property expression="$ctx:businessId" name="businessId"/>
     </log>
     <property description="uri.var.contactId" expression="$ctx:contactId" name="uri.var.contactId" scope="default" type="STRING"/>
-    <property description="YLO_RESPOND" name="YLO_RESPOND" scope="default" type="BOOLEAN" value="true"/>
     <call>
         <endpoint key="SalesforceGetContactByIdEP"/>
     </call>

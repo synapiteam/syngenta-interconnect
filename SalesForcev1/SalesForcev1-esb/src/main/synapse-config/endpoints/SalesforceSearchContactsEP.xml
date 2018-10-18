@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="SalesforceSearchContactsEP" xmlns="http://ws.apache.org/ns/synapse">
+    <http method="get" uri-template="https://syngenta--DevAmit.cs88.my.salesforce.com/services/data/v42.0/query/?q={uri.var.query}"/>
+</endpoint>

@@ -78,25 +78,360 @@ responses:
 paths:
   /contacts/{contactId}:
     get:
-      summary: This endpoint returns the a welcome message
-      description: This endpoint returns the a welcome message
+      summary: Get Contact details by contactId
+      description: This API returns contact details of a given contactId
       operationId: getContactById
-      consumes:
-        - application/json
       produces:
         - application/json
       tags:
-        - Get a contact with a given contactId
+        - Get Contacts Information
       parameters:
         - name: contactId
           in: path
           required: true
           type: string
           description: Contact id is an unique indentifier in the system for a contact
-
       responses:
         '200':
-          description: Succesfull update but no response body
+          description: Contact details
+          examples:
+            example:
+              attributes:
+                type: Contact
+                url: /services/data/v42.0/sobjects/Contact/0039E00000jBOEcQAO
+              Id: 0039E00000jBOEcQAO
+              IsDeleted: false
+              MasterRecordId: null
+              AccountId: null
+              LastName: Luca Strozzi Test 1001
+              FirstName: null
+              Salutation: null
+              MiddleName: null
+              Suffix: null
+              Name: Luca Strozzi Test 1001
+              RecordTypeId: 01224000000R2RkAAK
+              OtherStreet: null
+              OtherCity: null
+              OtherState: null
+              OtherPostalCode: null
+              OtherCountry: null
+              OtherStateCode: null
+              OtherCountryCode: null
+              OtherLatitude: null
+              OtherLongitude: null
+              OtherGeocodeAccuracy: null
+              OtherAddress: null
+              MailingStreet: null
+              MailingCity: null
+              MailingState: null
+              MailingPostalCode: null
+              MailingCountry: null
+              MailingStateCode: null
+              MailingCountryCode: null
+              MailingLatitude: null
+              MailingLongitude: null
+              MailingGeocodeAccuracy: null
+              MailingAddress: null
+              Phone: null
+              Fax: null
+              MobilePhone: null
+              HomePhone: null
+              OtherPhone: null
+              AssistantPhone: null
+              ReportsToId: null
+              Email: null
+              Title: null
+              Department: null
+              AssistantName: null
+              LeadSource: null
+              Birthdate: null
+              Description: null
+              CurrencyIsoCode: USD
+              OwnerId: 0059E000005JPjyQAG
+              HasOptedOutOfEmail: false
+              HasOptedOutOfFax: false
+              DoNotCall: false
+              CreatedDate: '2018-10-18T07:34:28.000+0000'
+              CreatedById: 0059E000005JPjyQAG
+              LastModifiedDate: '2018-10-18T07:34:28.000+0000'
+              LastModifiedById: 0059E000005JPjyQAG
+              SystemModstamp: '2018-10-18T07:34:28.000+0000'
+              LastActivityDate: null
+              LastCURequestDate: null
+              LastCUUpdateDate: null
+              LastViewedDate: '2018-10-18T07:34:28.000+0000'
+              LastReferencedDate: '2018-10-18T07:34:28.000+0000'
+              EmailBouncedReason: null
+              EmailBouncedDate: null
+              IsEmailBounced: false
+              PhotoUrl: /services/images/photo/0039E00000jBOEcQAO
+              Jigsaw: null
+              JigsawContactId: null
+              Account_Billing_Block_Information__c: ',,,,'
+              Account_ID_Type__c: 'ERROR: NO FSAP/NSAP ID'
+              Account_Owner__c: null
+              Agreement_Expiry_Date__c: null
+              AgriEdge_Aptitude__c: null
+              Buying_Potential_CP_FR__c: null
+              Buying_Potential_CPandSE_FR__c: null
+              Buying_Potential_FR__c: null
+              Buying_Potential_Seeds_FR__c: null
+              Buying_Potential_Total_FR__c: null
+              CMD_Grower_Account_ID__c: null
+              CMD_Grower_Contact_ID__c: null
+              Communication_Opt_Out__c: null
+              Communication_Preferenced__c: null
+              Communication_Preferred__c: null
+              Contact_ID__c: 0039E00000jBOEcQAO
+              Contact_Process_Type_US_c__c: null
+              Contact_Process_Type__c: null
+              Contact_Role__c: null
+              Contact_Segment_FR__c: null
+              Contact_Sub_Type__c: null
+              Active_Bonusland_Contact__c: false
+              Address_same_as_Account__c: true
+              Contact_Type_FR__c: null
+              Contact_Type_Global__c: null
+              Contact_Type__c: null
+              County__c: null
+              Crop_Expertise__c: null
+              DISC__c: null
+              External_Contact_ID__c: null
+              Job_Title__c: null
+              Language__c: null
+              Lead_Source__c: null
+              Level_Of_Influence_FR__c: null
+              Mobile_Vendor__c: null
+              NDA_Executed__c: false
+              NSAP_Vendor_ID__c: null
+              Opt_in_ECom__c: false
+              Personal_Information__c: null
+              Pref_Communication_Method__c: null
+              Preferred_Name__c: null
+              Primary_Contact__c: false
+              ReportTo__c: null
+              SAPContactNo__c: null
+              SAP_Contact_ID_US__c: null
+              SAP_MDM_ID__c: null
+              Secondary_Email__c: null
+              Secondary_Language__c: null
+              Signing_Authority__c: false
+              Specialties_US__c: null
+              Status__c: Active
+              Street__c: null
+              Syngenta_Preference_FR__c: null
+              Tax_ID_US__c: null
+              Training_Needs__c: null
+              Twitter_Handle__c: null
+              Type__c: null
+              VR_sent_to_SAP_PI__c: false
+              Data_Protection_Agreement__c: false
+              Function__c: null
+              Postal_mail_opt_out__c: false
+              SMS_opt_out__c: false
+              TIMBASURVEYS__SurveyReminder__c: null
+              TIMBASURVEYS__Survey__c: null
+              TIMBASURVEYS__reminderStringSize__c: 0
+              Agreement_ID__c: null
+              et4ae5__HasOptedOutOfMobile__c: false
+              et4ae5__Mobile_Country_Code__c: null
+              Contact_Profile__c: null
+              Contact_Subscriptions_Global__c: null
+              Crops_Grown__c: null
+              Data_protection_agreement_Ref_nr__c: null
+              Data_protection_agreement_Signing_Date__c: null
+              Influence_on_the_Market_Formula__c: <img src="/img/samples/stars_000.gif" alt=" " border="0"/>
+              Influence_on_the_Market_Picklist__c: null
+              Loyalty_Programme__c: false
+              N_of_farmers_influenced__c: null
+              Other_Crops_Grown__c: null
+              SYT_Influenced_Formula__c: <img src="/img/samples/stars_000.gif" alt=" " border="0"/>
+              SYT_Influenced_Picklist__c: null
+              Test_Contact_Owner_Email__c: null
+              Test_Contact_Owner__c: null
+              Bonusland_Contact_ID__c: null
+              Bonusland_Last_Modified_Date__c: null
+              CRM_Code__c: null
+              Clicked_Subscription_Links_FR__c: null
+              Contact_Country_Filter__c: null
+              Contact_Province_Filter__c: null
+              CornerstoneId_US__c: null
+              Crop_Interests__c: null
+              District__c: null
+              Field_Crop_Seeds_Segmentation_ABC__c: null
+              Field_Crop_Segmentation_ABC__c: null
+              Agreement_Type__c: null
+              Line_ID__c: null
+              Loyalty_Status__c: null
+              NDA_Executed_US_c__c: false
+              Number_of_Product_Catalog_Required__c: null
+              Opt_Out_Other_Reason_FR__c: null
+              Potential__c: null
+              Reason_for_Opting_Out_FR__c: null
+              Record_Type_Name__c: Dealer Contact
+              ContactNr__c: C000229967
+              Signing_Authority_US_c__c: false
+              Specialty_Crop_Seeds_Segmentation_ABC__c: null
+              Specialty_Crop_Segmentation_ABC__c: null
+              Sub_District__c: null
+              System_Name__c: null
+              Title__c: null
+              UniqueKey__c: null
+              CP_Certification__c: null
+              Active__c: false
+              AgData_Contact_ID__c: null
+              Age__c: null
+              Analysis_and_Planning_Capability__c: null
+              Areas_of_Interest__c: null
+              Associated_Institution__c: null
+              Bill_District__c: null
+              CMD_Auto_Number__c: '0000551720'
+              Check_in_Check_out_user__c: null
+              Competition_Knowledge__c: null
+              ContactAssoc__c: 1
+              Contact_Subscriptions__c: null
+              Anniversary_Date__c: null
+              Customer_Segment__c: null
+              Customer_Service_Rep__c: null
+              Data_Entry_Responsibility__c: null
+              Delivery_Communication_Email_Opt_Out__c: true
+              Delivery_Communication_SMS_Opt_Out__c: true
+              Development_Program__c: null
+              Education_Institution__c: null
+              FC_CP_Segmentation__c: null
+              FC_Seeds_Segmentation__c: null
+              Footwear_Size__c: null
+              Home_Phone_Opt_Out__c: false
+              In_This_Job_Since__c: null
+              Inactive_Reason__c: null
+              Legacy_SFDC_Contact_ID__c: null
+              Listening_Skills__c: null
+              Marital_Status__c: null
+              Migrated_Record__c: false
+              Outlook_Category__c: null
+              PO_Box__c: null
+              Print_Emailme__c: false
+              Print_Formula__c: null
+              Print_In_Progress__c: false
+              Print_Last_User__c: null
+              Print_Template__c: null
+              Professional_Consistency__c: null
+              Ready_to_Print__c: <img src="img/msg_icons/confirm24.png" alt="green" border="0"/>
+              Relationship_Program__c: null
+              Relationship_with_Clients__c: null
+              SC_CP_Segmentation__c: null
+              SC_Seeds_Segmentation__c: null
+              SF_Full_ID__c: 0039E00000jBOEcQAO
+              Sales_Group__c: null
+              Sales_Office__c: null
+              Sales_Techniques_Knowledge__c: null
+              Social_Security_Number__c: null
+              Son_Daughter_1_Birthdate__c: null
+              Son_Daughter_1_Leadership_Academy__c: false
+              Son_Daughter_1_Name__c: null
+              Son_Daughter_2_Birthdate__c: null
+              Son_Daughter_2_Leadership_Academy__c: false
+              Son_Daughter_2_Name__c: null
+              Son_Daughter_3_Birthdate__c: null
+              Son_Daughter_3_Leadership_Academy__c: false
+              Son_Daughter_3_Name__c: null
+              Son_Daughter_4_Birthdate__c: null
+              Son_Daughter_4_Leadership_Academy__c: false
+              Son_Daughter_4_Name__c: null
+              Spouse_Birthdate__c: null
+              Spouse_Name__c: null
+              Syngenta_s_Technical_Group__c: null
+              Tax_ID_1__c: null
+              Tax_ID__c: null
+              Technical_Knowledge__c: null
+              US_77902__c: null
+              Crop_Interest__c: null
+              Associated_with_Syngenta_No_of_Years__c: null
+              Competitor_Products_usage__c: null
+              Educational_Qualification__c: null
+              Expertise_CO__c: null
+              Having_Other_Machine_Y_N__c: null
+              Having_own_Tractor_Y_N__c: null
+              Mailing_Addr__c: null
+              MDO_Name__c: null
+              Member_of_Grower_Associate_Committee__c: null
+              Other_Addr__c: null
+              Received_Govt_Award_Certificate_for_agr__c: null
+              SUL_Name__c: null
+              Allergy_Medicine__c: null
+              Syngenta_Products_Usage__c: null
+              Musical_Style__c: null
+              Use_Of_Internet__c: false
+              Use_Of_smartphone__c: false
+              Village__c: null
+              Which_Vehicle_you_have_2_4_wheeler__c: null
+              American_Visa__c: null
+              Blood_Type__c: null
+              CPF__c: null
+              Children__c: null
+              City_Boarding_1__c: null
+              City_Boarding_2__c: null
+              City_Boarding_3__c: null
+              City_of_Residence__c: null
+              Contract_Date__c: Not Set
+              Emergency_contact_name__c: null
+              Family_Relationship_Contact__c: null
+              Decision_Tool_Services__c: null
+              Favorite_Food__c: null
+              Fidelity_Number_1__c: null
+              Fidelity_Number_2__c: null
+              Fidelity_Number_3__c: null
+              Food_Restriction__c: null
+              Gender__c: null
+              Grower_Time__c: null
+              Has_Fidelity_Program_Airline__c: null
+              Hobbies__c: null
+              How_did_you_hear_of_the_Academy__c: null
+              It_is_part_of_decision_making__c: null
+              Knows_another_service_Allied_OTO__c: null
+              Lease_Farm_Acreage__c: null
+              Name_of_Fidelity_Program_1__c: null
+              Name_of_Fidelity_Program_2__c: null
+              Name_of_Fidelity_Program_3__c: null
+              Neighbor__c: null
+              Newsletter__c: false
+              Nickname__c: null
+              Number_of_children__c: null
+              Other_Consideration__c: null
+              Own_Farm_Acreage__c: null
+              Passport_Number__c: null
+              Passport_Validity__c: null
+              Passport_has_stamped_visit_to_Israel__c: null
+              Profession__c: null
+              RG__c: null
+              Smoking__c: null
+              FullName__c: Luca Strozzi Test 1001
+              Total_Farm_Acreage__c: null
+              Use_Continuos_Medicine__c: null
+              Use_Whatsapp__c: null
+              Vaccine_Date__c: null
+              Visa_Validity__c: null
+              What_Area__c: null
+              What_Continuos_Medicine__c: null
+              What_Food_Restriction__c: null
+              What_Medicine_You_Have_Allergy__c: null
+              Yellow_Fever_Vaccine__c: null
+              Shirt_Size__c: null
+              Favorite_Color__c: null
+              T_shirt_Size__c: null
+              Soccer_Team__c: null
+              Channel2Grower__c: null
+              Contact_E_mail__c: null
+              Contact_Home_Phone__c: null
+              Contact_Mobile_Phone__c: null
+              Country__c: null
+              From_SAP__c: false
+              Segment__c: null
+              Segmentation_Baseline__c: null
+              Same_as_Contact_PB_DateTime__c: null
+              AsstEmail__c: null
+              DirectOfficePhone__c: null
+            
         '400':
           $ref: '#/responses/BadRequest400Response'
         '401':
@@ -107,3 +442,131 @@ paths:
           $ref: '#/responses/Business456Response'
         '500':
           $ref: '#/responses/ServerError500Response'
+
+  "/contacts/":
+    get:
+      summary: Search for contacts by query
+      description: This API returns a list of matching contact details of a given SOQL query
+      operationId: searchContacts
+      produces:
+        - application/json
+      tags:
+        - Get Contacts Information
+      parameters:
+        - name: q
+          in: query
+          required: true
+          type: string
+          description: A salesforce query specified in SOQL language
+      responses:
+        "200":
+          description: Matching list of contacts
+          examples:
+            example:
+              totalSize: 9
+              done: true
+              records:
+                - attributes:
+                    type: Contact
+                    url: /services/data/v42.0/sobjects/Contact/0039E00000ioM55QAE
+                  Name: TestUser12345
+                - attributes:
+                    type: Contact
+                    url: /services/data/v42.0/sobjects/Contact/0039E00000ioM0QQAU
+                  Name: TestUser1
+                - attributes:
+                    type: Contact
+                    url: /services/data/v42.0/sobjects/Contact/0039E00000ioM0VQAU
+                  Name: TestUser99
+                - attributes:
+                    type: Contact
+                    url: /services/data/v42.0/sobjects/Contact/0039E00000jBOEcQAO
+                  Name: Luca Strozzi Test 1001
+                - attributes:
+                    type: Contact
+                    url: /services/data/v42.0/sobjects/Contact/0039E00000iplhrQAA
+                  Name: Tester90001
+                - attributes:
+                    type: Contact
+                    url: /services/data/v42.0/sobjects/Contact/0039E00000ioM1YQAU
+                  Name: TestUser999
+                - attributes:
+                    type: Contact
+                    url: /services/data/v42.0/sobjects/Contact/0039E00000inzCyQAI
+                  Name: Tester
+                - attributes:
+                    type: Contact
+                    url: /services/data/v42.0/sobjects/Contact/0039E00000ioM45QAE
+                  Name: TestUser999
+                - attributes:
+                    type: Contact
+                    url: /services/data/v42.0/sobjects/Contact/0039E00000ioM4AQAU
+                  Name: TestUser1234
+        "400":
+          $ref: "#/responses/BadRequest400Response"
+        "401":
+          $ref: "#/responses/Unauthorized401Response"
+        "404":
+          description: No document with this id and/or revision could be found
+        "456":
+          $ref: "#/responses/Business456Response"
+        "500":
+          $ref: "#/responses/ServerError500Response"
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+
+    post:
+      summary: Add a new contact
+      description: This API creates a new contact
+      operationId: addContact
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      tags:
+        - Create Contact
+      parameters:
+        - name: body
+          in: body
+          required: true
+          description: Details for the new contact
+          schema:
+            type: object
+            required:
+              - LastName
+            properties:
+              LastName:
+                type: string
+                example: Strozzi
+              FirstName:
+                type: string
+                example: Luca
+              Salutation:
+                type: string
+                example: Mr.
+              MiddleName:
+                type: string
+                example: T.
+              Suffix:
+                type: string
+                example: Senior
+      responses:
+        "200":
+          description: Matching list of contacts
+          examples:
+            example:
+              id: 0039E00000jBOEcQAO
+              success: true
+              errors: []
+        "400":
+          $ref: "#/responses/BadRequest400Response"
+        "401":
+          $ref: "#/responses/Unauthorized401Response"
+        "404":
+          description: No document with this id and/or revision could be found
+        "456":
+          $ref: "#/responses/Business456Response"
+        "500":
+          $ref: "#/responses/ServerError500Response"
+      x-auth-type: None
+      x-throttling-tier: Unlimited

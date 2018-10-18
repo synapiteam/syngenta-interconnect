@@ -8,7 +8,7 @@
                 </format>
                 <args/>
             </payloadFactory>
-            <cache collector="false" description="Access Token" maxMessageSize="2000" timeout="120">
+            <cache collector="false" description="Access Token" maxMessageSize="2000" timeout="300">
                 <onCacheHit>
                     <property description="accessToken" expression="//access_token" name="accessToken" scope="default" type="STRING"/>
                     <log description="Retrieving Access Token from Cache" level="custom">

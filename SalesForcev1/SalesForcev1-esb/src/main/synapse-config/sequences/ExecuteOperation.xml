@@ -5,32 +5,73 @@
         <target type="body"/>
     </enrich>
     <header expression="concat('Bearer ', $ctx:accessToken)" name="Authorization" scope="transport"/>
-    <switch source="$ctx:YLO_URI">
-        <case regex="/services/ContactManagementProxyv1/contacts/.*">
-            <call-template description="get QueryInput as JSON" target="conf:syn/sharedResources/sequences/QueryInputAsJSON.xml">
-                <with-param name="uri_template_value" value="/services/ContactManagementProxyv1/contacts/{contactId}"/>
-            </call-template>
-            <log category="DEBUG" description="query input" level="custom" separator=",">
-                <property name="status" value="query input:"/>
-                <property expression="$ctx:YLO_URI_PARAMS" name="URL Params"/>
-            </log>
-            <property description="contactId" expression="//contactId" name="contactId" scope="default" type="STRING"/>
-            <property description="technicalId" expression="get-property('MessageID')" name="technicalId" scope="default" type="STRING"/>
-            <property description="businessCase" name="businessCase" scope="default" type="STRING" value="ContactManagementProxyv1"/>
-            <property description="businessId" expression="$ctx:contactId" name="businessId" scope="default" type="STRING"/>
-            <log category="DEBUG" description="Request" level="custom">
-                <property name="status" value="GetContactById Request input"/>
-                <property expression="$ctx:contactId" name="contactId"/>
+    <switch description="http method" source="$ctx:YLO_HTTP_METHOD">
+        <case regex="GET">
+            <switch description="URI template" source="$ctx:YLO_URI">
+                <case regex="/services/ContactManagementProxyv1/contacts/\?q=.*">
+                    <call-template description="get QueryInput as JSON" target="conf:syn/sharedResources/sequences/QueryInputAsJSON.xml">
+                        <with-param name="uri_template_value" value="/services/ContactManagementProxyv1/query/?q={query}"/>
+                    </call-template>
+                    <log category="DEBUG" description="query input" level="custom" separator=",">
+                        <property name="status" value="query input:"/>
+                        <property expression="$ctx:YLO_URI_PARAMS" name="URL Params"/>
+                    </log>
+                    <property description="query" expression="//q" name="query" scope="default" type="STRING"/>
+                    <property description="technicalId" expression="get-property('MessageID')" name="technicalId" scope="default" type="STRING"/>
+                    <property description="businessCase" name="businessCase" scope="default" type="STRING" value="ContactManagementProxyv1-SearchContacts"/>
+                    <property description="businessId" expression="get-property('query')" name="businessId" scope="default" type="STRING"/>
+                    <log category="DEBUG" description="Request" level="custom">
+                        <property name="status" value="SearchContacts Request input"/>
+                        <property expression="$ctx:query" name="query"/>
+                        <property expression="$ctx:technicalId" name="technicalId"/>
+                        <property expression="$ctx:businessCase" name="businessCase"/>
+                        <property expression="$ctx:businessId" name="businessId"/>
+                    </log>
+                    <sequence key="SearchContacts"/>
+                </case>
+                <case regex="/services/ContactManagementProxyv1/contacts/.*">
+                    <call-template description="get QueryInput as JSON" target="conf:syn/sharedResources/sequences/QueryInputAsJSON.xml">
+                        <with-param name="uri_template_value" value="/services/ContactManagementProxyv1/contacts/{contactId}"/>
+                    </call-template>
+                    <log category="DEBUG" description="query input" level="custom" separator=",">
+                        <property name="status" value="query input:"/>
+                        <property expression="$ctx:YLO_URI_PARAMS" name="URL Params"/>
+                    </log>
+                    <property description="contactId" expression="//contactId" name="contactId" scope="default" type="STRING"/>
+                    <property description="technicalId" expression="get-property('MessageID')" name="technicalId" scope="default" type="STRING"/>
+                    <property description="businessCase" name="businessCase" scope="default" type="STRING" value="ContactManagementProxyv1-GetContactById"/>
+                    <property description="businessId" expression="$ctx:contactId" name="businessId" scope="default" type="STRING"/>
+                    <log category="DEBUG" description="Request" level="custom">
+                        <property name="status" value="GetContactById Request input"/>
+                        <property expression="$ctx:contactId" name="contactId"/>
+                        <property expression="$ctx:technicalId" name="technicalId"/>
+                        <property expression="$ctx:businessCase" name="businessCase"/>
+                        <property expression="$ctx:businessId" name="businessId"/>
+                    </log>
+                    <sequence key="GetContactById"/>
+                </case>
+                <default>
+                    <log category="ERROR" description="ERROR" separator=",">
+                        <property name="ERROR" value="Invalid input URI Template"/>
+                        <property expression="$ctx:YLO_URI" name="uri_template_value"/>
+                        <property expression="$ctx:technicalId" name="technicalId"/>
+                        <property expression="$ctx:businessCase" name="businessCase"/>
+                        <property expression="$ctx:businessId" name="businessId"/>
+                    </log>
+                </default>
+            </switch>
+        </case>
+        <case regex="POST">
+            <log category="WARN" description="NOT IMPLEMENTED" level="custom">
                 <property expression="$ctx:technicalId" name="technicalId"/>
                 <property expression="$ctx:businessCase" name="businessCase"/>
                 <property expression="$ctx:businessId" name="businessId"/>
             </log>
-            <sequence key="GetSalesforceContact"/>
         </case>
         <default>
             <log category="ERROR" description="ERROR" separator=",">
-                <property name="ERROR" value="Invalid input URI Template"/>
-                <property expression="$ctx:YLO_URI" name="uri_template_value"/>
+                <property name="ERROR" value="Invalid input HTTP Method"/>
+                <property expression="$ctx:YLO_HTTP_METHOD" name="YLO_HTTP_METHOD"/>
                 <property expression="$ctx:technicalId" name="technicalId"/>
                 <property expression="$ctx:businessCase" name="businessCase"/>
                 <property expression="$ctx:businessId" name="businessId"/>
