@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <endpoint name="InternalTokenEndpoint" xmlns="http://ws.apache.org/ns/synapse">
-    <address uri="http://localhost:8282/services/TokenProxy"/>
+    <http method="get" uri-template="http://localhost:8280/services/TokenProxy"/>
+    <description>Gets a cached or a new access token from Salesforce</description>
 </endpoint>

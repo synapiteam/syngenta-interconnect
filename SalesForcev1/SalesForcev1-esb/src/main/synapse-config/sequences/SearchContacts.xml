@@ -8,9 +8,26 @@
         <property expression="$ctx:businessCase" name="businessCase"/>
         <property expression="$ctx:businessId" name="businessId"/>
     </log>
-    <property description="uri.var.query" expression="$ctx:query" name="uri.var.query" scope="default" type="STRING"/>
+    <script language="js"><![CDATA[query = mc.getProperty('query');
+    	decodedQuery = decodeURI(query);
+    	decodedQuery = decodedQuery.replace(/[%]/g, '%25');
+    	mc.setProperty('uri.var.query', decodedQuery);]]></script>
+    <log category="DEBUG" description="Decoded query" level="custom">
+        <property name="status" value="Decoded query"/>
+        <property expression="$ctx:uri.var.query" name="query"/>
+        <property expression="$ctx:technicalId" name="technicalId"/>
+        <property expression="$ctx:businessCase" name="businessCase"/>
+        <property expression="$ctx:businessId" name="businessId"/>
+    </log>
+    <property name="host" scope="default" type="STRING" value="https://syngenta--DevAmit.cs88.my.salesforce.com"/>
+    <property name="context" scope="default" type="STRING" value="services/data/v42.0/query"/>
+    <property expression="concat('?q=', $ctx:uri.var.query)" name="resourcepath" scope="default" type="STRING"/>
+    <header expression="fn:concat($ctx:host,'/',$ctx:context,'/',$ctx:resourcepath)" name="To" scope="default"/>
+    <property name="HTTP_METHOD" scope="axis2" type="STRING" value="GET"/>
     <call>
-        <endpoint key="SalesforceSearchContactsEP"/>
+        <endpoint>
+            <default/>
+        </endpoint>
     </call>
     <log description="...got Search Contacts response from Salesforce" level="custom">
         <property name="status" value="...got Search Contacts response from Salesforce"/>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="DumpData" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <call-template description="call EntrySequence" target="conf:syn/sharedResources/sequences/EntrySequenceTemplate.xml">
+                <with-param name="serviceName" value="ContactManagementProxyv1"/>
+            </call-template>
+            <log level="full">
+                <property expression="$ctx:YLO_URI" name="YLO_URI"/>
+            </log>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+</proxy>

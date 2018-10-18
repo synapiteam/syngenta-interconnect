@@ -63,6 +63,7 @@
         </case>
         <case regex="POST">
             <log category="WARN" description="NOT IMPLEMENTED" level="custom">
+                <property name="ERROR" value="POST IS NOT IMPLEMENTED"/>
                 <property expression="$ctx:technicalId" name="technicalId"/>
                 <property expression="$ctx:businessCase" name="businessCase"/>
                 <property expression="$ctx:businessId" name="businessId"/>
