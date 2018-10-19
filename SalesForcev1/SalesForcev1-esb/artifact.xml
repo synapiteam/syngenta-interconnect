@@ -20,9 +20,6 @@
     <artifact name="SearchContacts" groupId="com.syngenta.esb.services.SalesForce.SalesForcev1.sequence" version="1.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/sequences/SearchContacts.xml</file>
     </artifact>
-    <artifact name="DumpData" groupId="com.syngenta.esb.services.SalesForce.SalesForcev1.proxy-service" version="1.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
-        <file>src/main/synapse-config/proxy-services/DumpData.xml</file>
-    </artifact>
     <artifact name="InternalTokenEndpoint" groupId="com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint" version="1.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/InternalTokenEndpoint.xml</file>
     </artifact>

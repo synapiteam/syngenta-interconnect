@@ -14,6 +14,7 @@
   <name>HelloWorld CAR project</name>
   <description>HelloWorld CAR Project containing CAR deployment artifact</description>
   <properties>
+    <com.syngenta.esb.services.HelloWorld.HelloWorld.proxy-service_._DumpData>capp/EnterpriseServiceBus</com.syngenta.esb.services.HelloWorld.HelloWorld.proxy-service_._DumpData>
     <maven.car.deploy.skip>false</maven.car.deploy.skip>
     <com.syngenta.esb.services.HelloWorld.HelloWorld.proxy-service_._HelloWorldProxy>capp/EnterpriseServiceBus</com.syngenta.esb.services.HelloWorld.HelloWorld.proxy-service_._HelloWorldProxy>
     <com.syngenta.esb.services.HelloWorld.HelloWorld.endpoint_._HelloWorldMockResponderEP>capp/EnterpriseServiceBus</com.syngenta.esb.services.HelloWorld.HelloWorld.endpoint_._HelloWorldMockResponderEP>
@@ -36,6 +37,12 @@
     <dependency>
       <groupId>com.syngenta.esb.services.HelloWorld.HelloWorld.proxy-service</groupId>
       <artifactId>HelloWorldProxy</artifactId>
+      <version>1.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.syngenta.esb.services.HelloWorld.HelloWorld.proxy-service</groupId>
+      <artifactId>DumpData</artifactId>
       <version>1.0</version>
       <type>xml</type>
     </dependency>

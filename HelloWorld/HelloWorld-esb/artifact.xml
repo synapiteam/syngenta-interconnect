@@ -8,4 +8,7 @@
     <artifact name="HelloWorldMockResponderEP" groupId="com.syngenta.esb.services.HelloWorld.HelloWorld.endpoint" version="1.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/HelloWorldMockResponderEP.xml</file>
     </artifact>
+    <artifact name="DumpData" groupId="com.syngenta.esb.services.HelloWorld.HelloWorld.proxy-service" version="1.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/DumpData.xml</file>
+    </artifact>
 </artifacts>
