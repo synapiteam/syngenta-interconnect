@@ -21,6 +21,8 @@
     <com.syngenta.esb.services.SalesForce.SalesForcev1.proxy-service_._TokenProxy>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.proxy-service_._TokenProxy>
     <com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceAccessTokenEP>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceAccessTokenEP>
     <com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._GetContactById>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._GetContactById>
+    <com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceCreateContactEP>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceCreateContactEP>
+    <com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._CreateContact>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._CreateContact>
     <com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._SearchContacts>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._SearchContacts>
     <com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._ExecuteOperation>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.sequence_._ExecuteOperation>
     <com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceGetContactByIdEP>capp/EnterpriseServiceBus</com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint_._SalesforceGetContactByIdEP>
@@ -71,6 +73,18 @@
     <dependency>
       <groupId>com.syngenta.esb.services.SalesForce.SalesForcev1.sequence</groupId>
       <artifactId>SearchContacts</artifactId>
+      <version>1.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint</groupId>
+      <artifactId>SalesforceCreateContactEP</artifactId>
+      <version>1.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.syngenta.esb.services.SalesForce.SalesForcev1.sequence</groupId>
+      <artifactId>CreateContact</artifactId>
       <version>1.0</version>
       <type>xml</type>
     </dependency>

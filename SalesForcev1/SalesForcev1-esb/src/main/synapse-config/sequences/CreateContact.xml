@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="CreateContact" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Creating Contact in Salesforce..." level="custom">
+        <property name="status" value="Creating Contact in Salesforce..."/>
+        <property expression="$ctx:accessToken" name="accessToken"/>
+        <property expression="$ctx:technicalId" name="technicalId"/>
+        <property expression="$ctx:businessCase" name="businessCase"/>
+        <property expression="$ctx:businessId" name="businessId"/>
+    </log>
+    <property description="messageType" name="messageType" scope="axis2" type="STRING" value="application/json"/>
+    <call>
+        <endpoint key="SalesforceCreateContactEP"/>
+    </call>
+    <log description="...got Contact Id from Salesforce" level="custom">
+        <property name="status" value="...got Contact Id from Salesforce"/>
+        <property expression="$ctx:technicalId" name="technicalId"/>
+        <property expression="$ctx:businessCase" name="businessCase"/>
+        <property expression="$ctx:businessId" name="businessId"/>
+        <property expression="//id" name="new contactId"/>
+    </log>
+</sequence>

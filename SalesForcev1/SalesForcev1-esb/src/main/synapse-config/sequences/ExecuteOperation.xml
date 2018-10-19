@@ -52,7 +52,7 @@
                 </case>
                 <default>
                     <log category="ERROR" description="ERROR" separator=",">
-                        <property name="ERROR" value="Invalid input URI Template"/>
+                        <property name="ERROR" value="Invalid input URI Template for the GET method"/>
                         <property expression="$ctx:YLO_URI" name="uri_template_value"/>
                         <property expression="$ctx:technicalId" name="technicalId"/>
                         <property expression="$ctx:businessCase" name="businessCase"/>
@@ -62,12 +62,31 @@
             </switch>
         </case>
         <case regex="POST">
-            <log category="WARN" description="NOT IMPLEMENTED" level="custom">
-                <property name="ERROR" value="POST IS NOT IMPLEMENTED"/>
-                <property expression="$ctx:technicalId" name="technicalId"/>
-                <property expression="$ctx:businessCase" name="businessCase"/>
-                <property expression="$ctx:businessId" name="businessId"/>
-            </log>
+            <switch description="URI template" source="$ctx:YLO_URI">
+                <case regex="/services/ContactManagementProxyv1/contacts/">
+                    <property description="contactDetails" expression="/" name="contactDetails" scope="default" type="STRING"/>
+                    <property description="technicalId" expression="get-property('MessageID')" name="technicalId" scope="default" type="STRING"/>
+                    <property description="businessCase" name="businessCase" scope="default" type="STRING" value="ContactManagementProxyv1-SearchContacts"/>
+                    <property description="businessId" expression="//LastName" name="businessId" scope="default" type="STRING"/>
+                    <log category="DEBUG" description="Request" level="custom">
+                        <property name="status" value="CreateContact Request input"/>
+                        <property expression="$ctx:contactDetails" name="contactDetails"/>
+                        <property expression="$ctx:technicalId" name="technicalId"/>
+                        <property expression="$ctx:businessCase" name="businessCase"/>
+                        <property expression="$ctx:businessId" name="businessId"/>
+                    </log>
+                    <sequence key="CreateContact"/>
+                </case>
+                <default>
+                    <log category="ERROR" description="ERROR" separator=",">
+                        <property name="ERROR" value="Invalid input URI Template for the POST method"/>
+                        <property expression="$ctx:YLO_URI" name="uri_template_value"/>
+                        <property expression="$ctx:technicalId" name="technicalId"/>
+                        <property expression="$ctx:businessCase" name="businessCase"/>
+                        <property expression="$ctx:businessId" name="businessId"/>
+                    </log>
+                </default>
+            </switch>
         </case>
         <default>
             <log category="ERROR" description="ERROR" separator=",">

@@ -44,6 +44,7 @@
                 <property expression="$ctx:technicalId" name="technicalId"/>
                 <property expression="$ctx:businessCase" name="businessCase"/>
                 <property expression="$ctx:businessId" name="businessId"/>
+                <property expression="$axis2:HTTP_SC" name="HTTP_SC"/>
             </log>
             <respond/>
         </inSequence>

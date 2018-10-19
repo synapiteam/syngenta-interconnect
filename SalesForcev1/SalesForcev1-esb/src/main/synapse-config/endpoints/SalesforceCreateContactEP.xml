@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="SalesforceCreateContactEP" xmlns="http://ws.apache.org/ns/synapse">
+    <http method="post" uri-template="https://syngenta--DevAmit.cs88.my.salesforce.com/services/data/v42.0/sobjects/Contact/"/>
+</endpoint>

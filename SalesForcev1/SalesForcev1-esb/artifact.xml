@@ -23,4 +23,10 @@
     <artifact name="InternalTokenEndpoint" groupId="com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint" version="1.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/InternalTokenEndpoint.xml</file>
     </artifact>
+    <artifact name="CreateContact" groupId="com.syngenta.esb.services.SalesForce.SalesForcev1.sequence" version="1.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/CreateContact.xml</file>
+    </artifact>
+    <artifact name="SalesforceCreateContactEP" groupId="com.syngenta.esb.services.SalesForce.SalesForcev1.endpoint" version="1.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/SalesforceCreateContactEP.xml</file>
+    </artifact>
 </artifacts>

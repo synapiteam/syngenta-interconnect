@@ -551,8 +551,8 @@ paths:
                 type: string
                 example: Senior
       responses:
-        "200":
-          description: Matching list of contacts
+        "201":
+          description: Successfully created a new contact
           examples:
             example:
               id: 0039E00000jBOEcQAO
