@@ -11,6 +11,31 @@
     <call>
         <endpoint key="SalesforceCreateContactEP"/>
     </call>
+    <switch source="$axis2:HTTP_SC">
+        <case regex="201">
+            <payloadFactory description="Response to service consumer" media-type="xml">
+                <format>
+                    <contactId xmlns="">$1</contactId>
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="//id"/>
+                </args>
+            </payloadFactory>
+        </case>
+        <default>
+            <payloadFactory description="Error to service consumer" media-type="xml">
+                <format>
+                    <error>
+                        <errorCode xmlns="">500</errorCode>
+                        <errorMessage xmlns="">There was an error</errorMessage>
+                    </error>
+                </format>
+                <args/>
+            </payloadFactory>
+            <property description="HTTP_SC" name="HTTP_SC" scope="axis2" type="STRING" value="500"/>
+        </default>
+    </switch>
+    <property description="messageType" name="messageType" scope="axis2" type="STRING" value="application/json"/>
     <log description="...got Contact Id from Salesforce" level="custom">
         <property name="status" value="...got Contact Id from Salesforce"/>
         <property expression="$ctx:technicalId" name="technicalId"/>
