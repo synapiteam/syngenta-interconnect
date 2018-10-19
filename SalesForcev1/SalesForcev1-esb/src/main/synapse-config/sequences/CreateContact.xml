@@ -25,10 +25,10 @@
         <default>
             <payloadFactory description="Error to service consumer" media-type="xml">
                 <format>
-                    <error>
+                    <technicalFault>
                         <errorCode xmlns="">500</errorCode>
                         <errorMessage xmlns="">There was an error</errorMessage>
-                    </error>
+                    </technicalFault>
                 </format>
                 <args/>
             </payloadFactory>
